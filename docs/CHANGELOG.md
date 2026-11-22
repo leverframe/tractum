@@ -13,6 +13,33 @@ Dates are ISO 8601 (UTC).
 
 _No changes yet._
 
+## [0.6.1] — 2026-11-22
+
+### Fixed
+- **Default model refreshed** — `claude-3-5-sonnet-20241022` →
+  `claude-sonnet-5` everywhere it ships as the fallback: `AgentConfig.model`,
+  the `CoordinatorConfig` planner default, the MCP server and api
+  orchestration fallbacks, and the docs tables. Per-agent/per-call
+  `model` overrides are unchanged.
+
+## [0.6.0] — 2026-11-20
+
+### Changed
+- **MCP server migrated to mcp 2.x** — the `mcp` extra now pins
+  `>=2.0.0,<3`; `mcp.server.fastmcp.FastMCP` (removed in 2.x) →
+  `mcp.server.mcpserver.MCPServer`; `server.call_tool()` returns a
+  `CallToolResult` object (`.content` / `.structured_content`) instead of a
+  `(content, structured)` tuple. Tool shapes (`@mcp.tool()`, stdio +
+  streamable-http `run()`) are unchanged.
+
+### Fixed
+- Dashboard dependency sweep — React types aligned with the React 19
+  runtime (`@types/react`/`@types/react-dom` 19.3.0), eslint 10.15,
+  eslint-config-next 16.4.6, react-query 5.107, and the `minimatch`
+  GHSA-g3hv-75wg-m249 advisory cleared (11.0.9).
+- Post-transfer URL sweep — the BUSL LICENSE canonical location and all
+  remaining links now point at `leverframe/tractum`.
+
 ## [0.5.0] — 2026-10-17
 
 Feature release — **.curt linkage, self-verifying MCP receipts, and the
@@ -303,7 +330,9 @@ questions.
   are deferred — see
   [`docs/DEPRECATION.md`](https://github.com/leverframe/tractum/blob/main/docs/DEPRECATION.md).
 
-[Unreleased]: https://github.com/leverframe/tractum/compare/v0.4.0...HEAD
+[Unreleased]: https://github.com/leverframe/tractum/compare/v0.6.1...HEAD
+[0.6.1]: https://github.com/leverframe/tractum/releases/tag/v0.6.1
+[0.6.0]: https://github.com/leverframe/tractum/releases/tag/v0.6.0
 [0.5.0]: https://github.com/leverframe/tractum/releases/tag/v0.5.0
 [0.4.0]: https://github.com/leverframe/tractum/releases/tag/v0.4.0
 [0.3.2]: https://github.com/leverframe/tractum/releases/tag/v0.3.2

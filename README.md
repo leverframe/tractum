@@ -227,7 +227,7 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the full design.
 
 ## Status & roadmap
 
-Current release: **v0.6.0** ([PyPI](https://pypi.org/project/tractum/) · [changelog](docs/CHANGELOG.md)). Shipped to date: the SDK (Swarm, Coordinator, Agent) with concurrent execution; WeightedVote + Debate consensus; per-agent signed statements and k-of-n quorum receipts; Ed25519 + ML-DSA-65 signing backends; JSON / W3C VC / Nostr NIP-78 transports; the MCP server on mcp 2.x; LangGraph, MAF, CrewAI, and Buzz adapters; the transparency log; and the blind-judge benchmark (Tractum +7/20 vs single Claude, +5/20 vs CrewAI). Full version history in the [changelog](docs/CHANGELOG.md).
+Current release: **v0.6.1** ([PyPI](https://pypi.org/project/tractum/) · [changelog](docs/CHANGELOG.md)). Shipped to date: the SDK (Swarm, Coordinator, Agent) with concurrent execution; WeightedVote + Debate consensus; per-agent signed statements and k-of-n quorum receipts; Ed25519 + ML-DSA-65 signing backends; JSON / W3C VC / Nostr NIP-78 transports; the MCP server on mcp 2.x; LangGraph, MAF, CrewAI, and Buzz adapters; the transparency log; and the blind-judge benchmark (Tractum +7/20 vs single Claude, +5/20 vs CrewAI). Full version history in the [changelog](docs/CHANGELOG.md).
 
 **Next:**
 - A2A (Agent-to-Agent) protocol adapter — verifiable consensus for Google's agent protocol
