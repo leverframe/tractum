@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://tractum.dev"><img src="assets/tractum-lockup.svg" alt="Tractum" width="520" /></a>
+  <a href="https://tractum.dev"><img src="assets/tractum-lockup.png" alt="Tractum" width="520" /></a>
 </p>
 
 <p align="center">
