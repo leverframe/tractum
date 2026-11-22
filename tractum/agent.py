@@ -57,7 +57,7 @@ class AgentConfig:
     name: str
     role: str
     instructions: str
-    model: str = "claude-3-5-sonnet-20241022"
+    model: str = "claude-sonnet-5"
     temperature: float = 0.7
     max_tokens: int = 4096
     tools: list[Any] = field(default_factory=list)  # List of Tool instances

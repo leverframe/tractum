@@ -28,7 +28,7 @@ AgentConfig(
 | `name` | `str` | (required) | Display name; lands on the receipt under each agent's response. |
 | `role` | `str` | (required) | One-line role description; injected into the system prompt. |
 | `instructions` | `str` | (required) | Free-form system-prompt body. |
-| `model` | `str` | `"claude-3-5-sonnet-20241022"` | Any Anthropic model id. |
+| `model` | `str` | `"claude-sonnet-5"` | Any Anthropic model id. |
 | `temperature` | `float` | `0.7` | Sampling temperature. |
 | `max_tokens` | `int` | `4096` | Per-call completion cap. Tight values truncate the structured `<answer>` block; the parser tolerates open-but-unclosed tags. |
 | `tools` | `list[Any]` | `[]` | `Tool` instances. Passed to the API only if non-empty (real API rejects `tools=None`). |
@@ -133,7 +133,7 @@ coord = Coordinator(CoordinatorConfig())
 | `name` | `"Coordinator"` |
 | `role` | `"Task Coordinator and Manager"` |
 | `instructions` | Built-in decomposition prompt (~4 lines) |
-| `model` | `"claude-3-5-sonnet-20241022"` |
+| `model` | `"claude-sonnet-5"` |
 | `temperature` | `0.7` |
 | `max_tokens` | `4096` |
 

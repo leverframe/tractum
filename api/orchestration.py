@@ -39,7 +39,7 @@ class OrchestrationService:
                 name=agent_dict["name"],
                 role=agent_dict["role"],
                 instructions=agent_dict["instructions"],
-                model=agent_dict.get("model", "claude-3-5-sonnet-20241022"),
+                model=agent_dict.get("model", "claude-sonnet-5"),
                 temperature=agent_dict.get("temperature", 0.7),
                 max_tokens=agent_dict.get("max_tokens", 4096),
             )
