@@ -49,7 +49,7 @@ class CoordinatorConfig(AgentConfig):
 
 When given a task, analyze it and create a structured plan with sub-tasks.
 Be specific about what each sub-task requires and who should handle it.""",
-        model: str = "claude-3-5-sonnet-20241022",
+        model: str = "claude-sonnet-5",
         temperature: float = 0.7,
         max_tokens: int = 4096,
     ):

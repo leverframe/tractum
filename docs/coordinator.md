@@ -123,7 +123,7 @@ Honest about what's not finished:
 - **Specialist routing falls back silently.** A `specialist_role` that doesn't exact-match an id or substring-match a role lands on the **first** registered specialist with no warning. A typo in the plan can send Analyst work to the Researcher.
 - **Coordinator runs unmatched sub-tasks itself** via its own `self.agent` — useful, but means the "manager" burns tokens on execution if routing misses.
 - **Plan degradation is invisible.** An unparseable or empty plan silently degrades to a single whole-task sub-task. The status string `"coordinator plan unparseable"` is the only signal — no warning is logged.
-- **Hardcoded planner model.** `CoordinatorConfig` defaults to `claude-3-5-sonnet-20241022`. Override if you want Opus for harder planning or Haiku for cheaper.
+- **Hardcoded planner model.** `CoordinatorConfig` defaults to `claude-sonnet-5`. Override if you want Opus for harder planning or Haiku for cheaper.
 
 ---
 

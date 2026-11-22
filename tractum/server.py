@@ -119,7 +119,7 @@ def _build_server() -> Any:
                 name=s["name"],
                 role=s["role"],
                 instructions=s.get("instructions", ""),
-                model=s.get("model", "claude-3-5-sonnet-20241022"),
+                model=s.get("model", "claude-sonnet-5"),
             )
             for s in specialists
         ]
