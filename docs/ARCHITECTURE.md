@@ -111,6 +111,7 @@ class Agent:
 ```
 
 **Capabilities**:
+
 - Conversation memory
 - Configurable model, temperature, max_tokens
 - System prompt from role + instructions
@@ -134,6 +135,7 @@ class Swarm:
 ```
 
 **Capabilities**:
+
 - Parallel agent execution
 - Consensus mechanism
 - Task history tracking
@@ -163,6 +165,7 @@ class Coordinator:
 ```
 
 **Capabilities**:
+
 - Task decomposition
 - Specialist assignment
 - Result synthesis
@@ -195,6 +198,7 @@ class Runtime:
 ```
 
 **Capabilities**:
+
 - Agent process supervision
 - Health monitoring
 - Task routing
@@ -207,6 +211,7 @@ class Runtime:
 ### API Gateway (`api/main.py`)
 
 FastAPI application with middleware:
+
 - CORS handling
 - Tenant context extraction
 - Rate limiting (future)
@@ -236,12 +241,12 @@ class OrchestrationService:
 
 ### Services
 
-| Service | Location | Responsibility |
-|---------|----------|---------------|
-| **OrchestrationService** | `orchestration.py` | Bridge to core engine |
-| **TenantService** | `tenants/service.py` | Multi-tenant CRUD, tier management |
-| **TemplateService** | `templates/service.py` | Agent template management |
-| **BillingService** | `billing/service.py` | Usage tracking, invoicing |
+| Service                  | Location               | Responsibility                     |
+| ------------------------ | ---------------------- | ---------------------------------- |
+| **OrchestrationService** | `orchestration.py`     | Bridge to core engine              |
+| **TenantService**        | `tenants/service.py`   | Multi-tenant CRUD, tier management |
+| **TemplateService**      | `templates/service.py` | Agent template management          |
+| **BillingService**       | `billing/service.py`   | Usage tracking, invoicing          |
 
 ---
 
@@ -335,6 +340,7 @@ POST   /v1/templates                  # Create template (admin)
 ### Request/Response Examples
 
 **Deploy Swarm**:
+
 ```json
 POST /v1/agents
 {
@@ -357,6 +363,7 @@ Response:
 ```
 
 **Submit Task**:
+
 ```json
 POST /v1/agents/{swarm_id}/task
 {
@@ -392,14 +399,14 @@ Response:
 
 ### Pages
 
-| Page | Route | Description |
-|------|-------|-------------|
-| **Home** | `/` | Landing page |
-| **Dashboard** | `/dashboard` | Overview with stats |
-| **Agents** | `/dashboard/agents` | Swarm management |
-| **Tenants** | `/dashboard/tenants` | Tenant management |
-| **Billing** | `/dashboard/billing` | Usage & invoices |
-| **Settings** | `/dashboard/settings` | User settings |
+| Page          | Route                 | Description         |
+| ------------- | --------------------- | ------------------- |
+| **Home**      | `/`                   | Landing page        |
+| **Dashboard** | `/dashboard`          | Overview with stats |
+| **Agents**    | `/dashboard/agents`   | Swarm management    |
+| **Tenants**   | `/dashboard/tenants`  | Tenant management   |
+| **Billing**   | `/dashboard/billing`  | Usage & invoices    |
+| **Settings**  | `/dashboard/settings` | User settings       |
 
 ### Key Components
 
@@ -502,6 +509,7 @@ gunicorn tractum.api.main:app -w 4 -k uvicorn.workers.UvicornWorker
 - **Tractum** = The organization system (coordination)
 
 Each agent in Tractum:
+
 1. Uses Claude as its "brain" via Anthropic API
 2. Participates in multi-agent collaboration patterns
 3. Is supervised by the Runtime for health and lifecycle
@@ -533,6 +541,7 @@ Task → [Agent1] ─┐
 ```
 
 **Best for**:
+
 - Diverse perspectives on same problem
 - Research and analysis
 - Brainstorming and ideation
@@ -547,6 +556,7 @@ Task → Coordinator → [Sub-task1 → Specialist1]
 ```
 
 **Best for**:
+
 - Complex multi-step tasks
 - Parallel specialized work
 - Structured workflows
@@ -558,6 +568,7 @@ Task → Agent1 → Output1 → Agent2 → Output2 → Agent3 → Result
 ```
 
 **Best for**:
+
 - Sequential processing
 - Multi-stage workflows
 - Assembly-line style tasks

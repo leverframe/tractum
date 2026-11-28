@@ -23,14 +23,14 @@ python examples/quickstart.py
 
 ## Project layout
 
-| Path | Purpose |
-|---|---|
-| `tractum/` | The shipped SDK package. Lean by design — keep new deps out of the base install. |
-| `tractum/adapters/` | Optional integrations (LangGraph). Lazy-import the host framework. |
-| `tractum/tools/` | Tool layer used by `Agent`. MCP tools import lazily. |
-| `examples/` | Runnable demos. `killer_demo.py` is the benchmark — don't break it. |
-| `tests/` | Pytest suite. Async tests use `pytest-asyncio` in auto mode. |
-| `docs/` | The mkdocs-material site (`mkdocs.yml` at repo root). |
+| Path                           | Purpose                                                                            |
+| ------------------------------ | ---------------------------------------------------------------------------------- |
+| `tractum/`                     | The shipped SDK package. Lean by design — keep new deps out of the base install.   |
+| `tractum/adapters/`            | Optional integrations (LangGraph). Lazy-import the host framework.                 |
+| `tractum/tools/`               | Tool layer used by `Agent`. MCP tools import lazily.                               |
+| `examples/`                    | Runnable demos. `killer_demo.py` is the benchmark — don't break it.                |
+| `tests/`                       | Pytest suite. Async tests use `pytest-asyncio` in auto mode.                       |
+| `docs/`                        | The mkdocs-material site (`mkdocs.yml` at repo root).                              |
 | `api/`, `dashboard/`, `infra/` | Deferred single-tenant runner. See `docs/DEPRECATION.md`. Don't add features here. |
 
 ## Before you open a PR
@@ -40,7 +40,7 @@ python examples/quickstart.py
    tweaks can go straight to PR.
 2. **Branch from `main`.** One logical change per PR.
 3. **Conventional commits.** `feat:`, `fix:`, `docs:`, `test:`, `refactor:`,
-   `chore:`, `ci:`. Subject ≤72 chars. Body wraps at 80. Explain the *why*
+   `chore:`, `ci:`. Subject ≤72 chars. Body wraps at 80. Explain the _why_
    when it's non-obvious. Match the existing log:
    `git log --oneline -20`.
 4. **Keep the base install lean.** New runtime dependencies in `tractum/`
@@ -69,7 +69,7 @@ repo standards (S417 v1). A failed gitleaks job blocks merge.
 - `ruff` is the only formatter/linter. Config in `pyproject.toml`. It runs
   on `tractum/`, `tests/`, and `examples/` in CI.
 - Python 3.11 minimum. Use modern syntax (`from __future__ import
-  annotations` where it makes sense).
+annotations` where it makes sense).
 - Match the surrounding file. If the file uses dataclasses, use dataclasses;
   if it uses Pydantic, use Pydantic.
 

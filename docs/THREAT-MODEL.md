@@ -30,7 +30,7 @@ are the agents' keys, and here are their signatures."
 
 **Compromised key holder.** Steals the Ed25519 key a node signs with.
 Can forge new receipts — and, since v0.4.0, new statements — under that
-key only. Pinning stops a stolen agent-key from signing as a *different*
+key only. Pinning stops a stolen agent-key from signing as a _different_
 agent; the compromise does not propagate. Cannot forge receipts or
 statements under other keys, and cannot rewrite past receipts published
 elsewhere.
@@ -98,8 +98,8 @@ The seams an acquirer closes:
   keys and naive verification will not catch it. Pin the keys you know.
 - **Agent correctness is not verified.** A confident wrong answer is
   recorded — and now individually signed — as confidently as a
-  confident right one. The receipt attests *what was said*, not *what is
-  true*.
+  confident right one. The receipt attests _what was said_, not _what is
+  true_.
 - **The signing keys are long-lived secrets.** If one leaks, everything
   signed by it becomes forgeable. No rotation, revocation, or forward
   secrecy.

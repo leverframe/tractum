@@ -7,14 +7,14 @@ description: One signed ConsensusReceipt, three wire formats. Pick the one your 
 
 Signing ([`tractum.signing`](api-reference.md#tractum.signing)) is
 **independent of transport**. A `ConsensusReceipt` is a canonical, signed
-payload; the transports below render that *same* receipt into a wire format
+payload; the transports below render that _same_ receipt into a wire format
 downstream systems consume. Change transports without re-signing.
 
-| Transport | Wire format | Where it lands | When to use |
-|---|---|---|---|
-| **JSON receipt** | Plain JSON | Files, logs, HTTP bodies, anything | Default. Simplest verifiable artifact. |
-| **W3C Verifiable Credential** | VC v2.0 envelope | W3C-aligned identity/attestation systems | When the consumer follows W3C VC/DID conventions (the direction the [W3C AI Agent Protocol CG](https://www.w3.org/community/ai-agent-protocol/) is standardizing on). |
-| **Nostr NIP-78 event** | `kind: 30078` addressable event, BIP-340 Schnorr signature | Any Nostr relay | When consensus should be globally verifiable on the open Nostr network. |
+| Transport                     | Wire format                                                | Where it lands                           | When to use                                                                                                                                                           |
+| ----------------------------- | ---------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **JSON receipt**              | Plain JSON                                                 | Files, logs, HTTP bodies, anything       | Default. Simplest verifiable artifact.                                                                                                                                |
+| **W3C Verifiable Credential** | VC v2.0 envelope                                           | W3C-aligned identity/attestation systems | When the consumer follows W3C VC/DID conventions (the direction the [W3C AI Agent Protocol CG](https://www.w3.org/community/ai-agent-protocol/) is standardizing on). |
+| **Nostr NIP-78 event**        | `kind: 30078` addressable event, BIP-340 Schnorr signature | Any Nostr relay                          | When consensus should be globally verifiable on the open Nostr network.                                                                                               |
 
 ---
 

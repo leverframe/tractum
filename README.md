@@ -21,7 +21,7 @@ Three agents debate, **each signs its own stance**, and the result ships as a k-
 
 ## The receipt on the wire
 
-Three Tractum agents ran a real Debate consensus on *"what's the missing primitive for agent agreement?"* — signed the result with Ed25519, wrapped as a NIP-78 Nostr event, published to four public relays. Not a screenshot. Not a demo video. The actual cryptographically-signed artifact on the actual wire.
+Three Tractum agents ran a real Debate consensus on _"what's the missing primitive for agent agreement?"_ — signed the result with Ed25519, wrapped as a NIP-78 Nostr event, published to four public relays. Not a screenshot. Not a demo video. The actual cryptographically-signed artifact on the actual wire.
 
 **View in any browser:** [nostr.mom/e/3974ebfe...](https://nostr.mom/e/3974ebfe688f1639a8534b46bbbfeddf354d18efcd190352da877756d1bac60b) — kind 30078 (NIP-78), BIP-340 signed.
 
@@ -115,16 +115,16 @@ result = await coord.coordinate(task)
 
 The agent-framework field is crowded but lopsided:
 
-| Tool | What it solves | The gap |
-|---|---|---|
-| **LangGraph** ($1.25B) | Production orchestration, manual graphs | Coordination is DIY wiring |
-| **CrewAI** | DX, fast prototyping | Coordination is shallow; +48% token cost |
-| **Goose** (Block) | Single-agent harness + MCP | No multi-agent at all |
-| **Buzz** (Block) | The *room* agents talk in | Coordination via workflows, no consensus primitive |
-| **Anthropic SDK** | Base Claude calls | No coordination layer |
-| **MCP marketplaces** | Tool distribution | No agreement primitive |
+| Tool                   | What it solves                          | The gap                                            |
+| ---------------------- | --------------------------------------- | -------------------------------------------------- |
+| **LangGraph** ($1.25B) | Production orchestration, manual graphs | Coordination is DIY wiring                         |
+| **CrewAI**             | DX, fast prototyping                    | Coordination is shallow; +48% token cost           |
+| **Goose** (Block)      | Single-agent harness + MCP              | No multi-agent at all                              |
+| **Buzz** (Block)       | The _room_ agents talk in               | Coordination via workflows, no consensus primitive |
+| **Anthropic SDK**      | Base Claude calls                       | No coordination layer                              |
+| **MCP marketplaces**   | Tool distribution                       | No agreement primitive                             |
 
-The whitespace, plain: *everyone built where agents act or where agents talk. Nobody shipped verifiable consensus — agreement with a tamper-evident receipt.* Tractum fills exactly that.
+The whitespace, plain: _everyone built where agents act or where agents talk. Nobody shipped verifiable consensus — agreement with a tamper-evident receipt._ Tractum fills exactly that.
 
 ## What makes it defensible
 
@@ -160,7 +160,7 @@ report.statements[2].reason     # "" | key-mismatch | task-id-mismatch
 - **Same receipt, same canonical payload hash** — the SignatureBackend ABC isolates the crypto; consensus code is untouched either way
 - **Three transports** — the same signed receipt renders as plain JSON, a W3C Verifiable Credential, or a **Nostr NIP-78 event** any Nostr client can read
 
-This is the layer that makes consensus worth *acquiring* rather than reimplementing in a weekend.
+This is the layer that makes consensus worth _acquiring_ rather than reimplementing in a weekend.
 
 ## Nostr transport — verifiable end-to-end
 
@@ -230,11 +230,13 @@ See [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) for the full design.
 Current release: **v0.6.1** ([PyPI](https://pypi.org/project/tractum/) · [changelog](docs/CHANGELOG.md)). Shipped to date: the SDK (Swarm, Coordinator, Agent) with concurrent execution; WeightedVote + Debate consensus; per-agent signed statements and k-of-n quorum receipts; Ed25519 + ML-DSA-65 signing backends; JSON / W3C VC / Nostr NIP-78 transports; the MCP server on mcp 2.x; LangGraph, MAF, CrewAI, and Buzz adapters; the transparency log; and the blind-judge benchmark (Tractum +7/20 vs single Claude, +5/20 vs CrewAI). Full version history in the [changelog](docs/CHANGELOG.md).
 
 **Next:**
+
 - A2A (Agent-to-Agent) protocol adapter — verifiable consensus for Google's agent protocol
 - W3C VC presentation exchange flow
 - Single-tenant runner — FastAPI + SQLite + dashboard, `docker compose up`
 
 **Deliberately deferred (the "Curtis lesson" — don't build before there's demand):**
+
 - Multi-tenancy, billing, Stripe, template marketplace. Re-activated only when paying demand appears. See [`docs/DEPRECATION.md`](docs/DEPRECATION.md).
 
 ## Docs
@@ -271,7 +273,7 @@ ruff check tractum/ tests/ examples/
 
 ## NEWELL
 
-*A [NEWELL](https://github.com/JordanNewell) project · maintained by Jordan Newell*
+_A [NEWELL](https://github.com/JordanNewell) project · maintained by Jordan Newell_
 
 - Site: [jordannewell.com](https://jordannewell.com)
 - GitHub: [@JordanNewell](https://github.com/JordanNewell)
@@ -282,7 +284,6 @@ For acquisition, partnership, integration, or "we're Block and we want to talk" 
 ## License
 
 Licensed under the Business Source License 1.1 (BUSL-1.1) — source-available; converts to MIT on 2030-10-12. See [LICENSE](LICENSE).
-
 
 <p align="right">
   <a href="https://jordannewell.com" title="Built by Jordan Newell">

@@ -31,11 +31,11 @@ Please include, where possible:
 - **Acknowledgement:** within **48 hours** (typically same business day).
 - **Initial assessment + severity rating:** within **5 business days**.
 - **Fix or mitigation timeline** depends on severity:
-  - *Critical* (RCE, signature forgery, key compromise): patch or mitigation
+  - _Critical_ (RCE, signature forgery, key compromise): patch or mitigation
     within 7 days of confirmation; coordinated disclosure afterwards.
-  - *High* (auth bypass, receipt tampering under specific conditions): patch
+  - _High_ (auth bypass, receipt tampering under specific conditions): patch
     within 30 days.
-  - *Medium / Low:* next minor release.
+  - _Medium / Low:_ next minor release.
 
 We will keep you informed at each step and credit you in the release notes
 unless you'd prefer to remain anonymous.

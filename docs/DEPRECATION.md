@@ -9,6 +9,7 @@ All "enterprise" platform features have been **deprecated and moved to `platform
 ## What Changed
 
 ### Before (Bloated)
+
 ```
 api/
 ├── billing/       → Invoices, Stripe, revenue tracking
@@ -23,6 +24,7 @@ api/
 **Problem**: API wouldn't start without database. Complex for no reason.
 
 ### After (Clean)
+
 ```
 api/
 ├── platform-deprecated/  → billing, tenants, templates (archived)
@@ -35,22 +37,24 @@ api/
 
 ## The Analysis
 
-| Feature | Use Case NOW | Use Case LATER | Headache NOW | Headache LATER |
-|---------|--------------|---------------|--------------|---------------|
-| **Billing** | 0 users | 100+ users | DB required | Tax, compliance, refunds |
-| **Tenants** | 1 user (you) | Multiple orgs | Query filters | Data isolation, audit logs |
-| **Templates** | No marketplace | Community demand | Over-engineering | Versioning, sharing |
-| **Analytics** | No data to analyze | Business intel | Storage costs | Privacy concerns |
+| Feature       | Use Case NOW       | Use Case LATER   | Headache NOW     | Headache LATER             |
+| ------------- | ------------------ | ---------------- | ---------------- | -------------------------- |
+| **Billing**   | 0 users            | 100+ users       | DB required      | Tax, compliance, refunds   |
+| **Tenants**   | 1 user (you)       | Multiple orgs    | Query filters    | Data isolation, audit logs |
+| **Templates** | No marketplace     | Community demand | Over-engineering | Versioning, sharing        |
+| **Analytics** | No data to analyze | Business intel   | Storage costs    | Privacy concerns           |
 
 ## Production Reality
 
 ### NOW (What You Have)
+
 - **Working core** ✅
 - **Simple deployment** ✅
 - **Dashboard** ✅
 - **No database dependency** ✅
 
 ### LATER (What You'll Need)
+
 - **Customers** (unknown when)
 - **Revenue** (requires customers first)
 - **Justification** (can add features when needed)
@@ -76,17 +80,20 @@ This is the **anti-pattern** we avoided:
 ## What To Re-Activate When
 
 ### Re-activate Billing WHEN:
+
 - [ ] You have 100+ active users
 - [ ] Someone is willing to pay
 - [ ] You've processed your first manual payment
 - [ ] The revenue justifies Stripe integration complexity
 
 ### Re-activate Tenants WHEN:
+
 - [ ] Two+ organizations are using the platform
 - [ ] You need to isolate customer data
 - [ ] You're selling to enterprises (not just devs)
 
 ### Re-activate Templates WHEN:
+
 - [ ] Users are sharing configs in Discord/forums
 - [ ] There's demand for "one-click deploy" patterns
 - [ ] You have a template approval process
@@ -149,15 +156,16 @@ python api/main.py
 
 **Current**: All infrastructure services are DEPRECATED and NOT running.
 
-| Service | Status | Used By |
-|---------|--------|---------|
-| **NATS** | ❌ Deprecated | Old federated messaging (now uses asyncio queues) |
-| **PostgreSQL** | ❌ Deprecated | Tenants, billing, templates (all deprecated) |
-| **Redis** | ❌ Deprecated | Rate limiting, sessions (middleware deprecated) |
+| Service        | Status        | Used By                                           |
+| -------------- | ------------- | ------------------------------------------------- |
+| **NATS**       | ❌ Deprecated | Old federated messaging (now uses asyncio queues) |
+| **PostgreSQL** | ❌ Deprecated | Tenants, billing, templates (all deprecated)      |
+| **Redis**      | ❌ Deprecated | Rate limiting, sessions (middleware deprecated)   |
 
 **Reason**: The custom core runtime uses in-process asyncio queues, not external services.
 
 **Current Architecture**:
+
 ```
 Dashboard → API → Core Runtime (asyncio)
 ```

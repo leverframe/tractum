@@ -57,17 +57,17 @@ away.**
 
 The agent-framework field is crowded but lopsided:
 
-| Tool | What it solves | The gap |
-|---|---|---|
-| **LangGraph** | Production orchestration, manual graphs | Coordination is DIY wiring |
-| **CrewAI** | DX, fast prototyping | Coordination is shallow; +48% token cost |
-| **Goose** (Block) | Single-agent harness + MCP | No multi-agent at all |
-| **Buzz** (Block) | The *room* agents talk in | Coordination via workflows, no consensus primitive |
-| **Anthropic SDK** | Base Claude calls | No coordination layer |
-| **MCP marketplaces** | Tool distribution | No agreement primitive |
+| Tool                 | What it solves                          | The gap                                            |
+| -------------------- | --------------------------------------- | -------------------------------------------------- |
+| **LangGraph**        | Production orchestration, manual graphs | Coordination is DIY wiring                         |
+| **CrewAI**           | DX, fast prototyping                    | Coordination is shallow; +48% token cost           |
+| **Goose** (Block)    | Single-agent harness + MCP              | No multi-agent at all                              |
+| **Buzz** (Block)     | The _room_ agents talk in               | Coordination via workflows, no consensus primitive |
+| **Anthropic SDK**    | Base Claude calls                       | No coordination layer                              |
+| **MCP marketplaces** | Tool distribution                       | No agreement primitive                             |
 
-The whitespace, plain: *everyone built where agents act or where agents talk.
-Nobody shipped verifiable consensus — agreement with a tamper-evident receipt.*
+The whitespace, plain: _everyone built where agents act or where agents talk.
+Nobody shipped verifiable consensus — agreement with a tamper-evident receipt._
 Tractum fills exactly that.
 
 ---
@@ -101,7 +101,7 @@ report.valid, report.valid_statements  # -> (True, 3)
   W3C Verifiable Credential, or a **Nostr NIP-78 event** any Nostr client
   can read.
 
-This is the layer that makes consensus worth *acquiring* rather than
+This is the layer that makes consensus worth _acquiring_ rather than
 reimplementing in a weekend. See [Transports](transports.md) for the
 tradeoffs and [API Reference](api-reference.md) for the surface area.
 

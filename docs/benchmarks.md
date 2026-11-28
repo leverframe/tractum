@@ -30,11 +30,11 @@ decision instead of a hedge. Single-model baselines collapse to a confident
 
 ## At a glance (mean over 3 runs each)
 
-| Approach | Wall-clock | Tokens (sum) | Judge score (/20) |
-|---|---:|---:|---:|
-| **Tractum Swarm** | 29.8s | 67,522 | **18** (17–19) |
-| **CrewAI crew** | 43.7s | — | 13 (12–14) |
-| **Single Claude** | 7.5s | 1,870 | 11 (10–12) |
+| Approach          | Wall-clock | Tokens (sum) | Judge score (/20) |
+| ----------------- | ---------: | -----------: | ----------------: |
+| **Tractum Swarm** |      29.8s |       67,522 |    **18** (17–19) |
+| **CrewAI crew**   |      43.7s |            — |        13 (12–14) |
+| **Single Claude** |       7.5s |        1,870 |        11 (10–12) |
 
 - Same model for every agent: `claude-haiku-4-5-20251001`.
 - Blind judge: `claude-sonnet-4-6`, scoring on correctness, nuance,
@@ -46,14 +46,14 @@ decision instead of a hedge. Single-model baselines collapse to a confident
 ## The honest takeaway
 
 - **Quality.** Tractum scored **+7/20** vs single Claude on average. The
-  structural win is the multi-perspective format: the judge sees *how* each
+  structural win is the multi-perspective format: the judge sees _how_ each
   specialist reasoned, not just the verdict.
 - **Cost.** Tractum used ~36x the tokens of single Claude. That's the real
   tradeoff. For `$0.001` decisions, single Claude is right. For decisions
   where being wrong is expensive — this one is $20M+ — the token cost is
   rounding error.
 - **What's free with Tractum.** Per-agent outputs are auditable (you see
-  *why* each specialist concluded what they did), the consensus is a signed
+  _why_ each specialist concluded what they did), the consensus is a signed
   tamper-evident receipt, and the whole thing publishes to any Nostr relay
   as a NIP-78 event with no extra work. None of the other approaches give
   you any of those.
@@ -64,7 +64,7 @@ Two things the other approaches don't produce at all:
 
 1. **The disagreement, surfaced.** Three specialists, agreement score **33%**,
    `disagreed: True`. Each agent's full answer is visible — you can audit
-   *why* the consensus landed where it did.
+   _why_ the consensus landed where it did.
 2. **The signed receipt.** Tamper-evident. Anyone can verify it later
    without trusting Tractum:
 

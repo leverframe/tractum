@@ -23,6 +23,7 @@ response = await agent.think("What is async programming?")
 ```
 
 **Purpose:**
+
 - Calls Anthropic API
 - Maintains conversation memory
 - Does the actual thinking/reasoning
@@ -46,6 +47,7 @@ deployment = SwarmDeployment(
 ```
 
 **Purpose:**
+
 - Tracks deployment metadata
 - Links to tenant for billing
 - Stores configuration
@@ -55,13 +57,13 @@ deployment = SwarmDeployment(
 
 ## Quick Reference
 
-| | Core Agent | SwarmDeployment |
-|---|---|---|
-| **File** | `core/agent.py` | `api/agents/deployment.py` |
-| **What** | Claude intelligence | Database record |
-| **Does** | Thinks, responds | Tracks deployment |
-| **Stored in** | Memory (Runtime) | PostgreSQL |
-| **Analogy** | The brain | The employee record |
+|               | Core Agent          | SwarmDeployment            |
+| ------------- | ------------------- | -------------------------- |
+| **File**      | `core/agent.py`     | `api/agents/deployment.py` |
+| **What**      | Claude intelligence | Database record            |
+| **Does**      | Thinks, responds    | Tracks deployment          |
+| **Stored in** | Memory (Runtime)    | PostgreSQL                 |
+| **Analogy**   | The brain           | The employee record        |
 
 ## Import Guide
 
@@ -99,11 +101,13 @@ Core Agent: await agent.think() → Anthropic API → Response
 ## Migration Notes
 
 **Old code:**
+
 ```python
 from agents.models import Agent  # Was confusing!
 ```
 
 **New code:**
+
 ```python
 # For actual AI agents
 from core.agent import Agent
@@ -113,5 +117,6 @@ from agents.deployment import SwarmDeployment
 ```
 
 **Table name:** Changed from `agents` to `swarm_deployments`
+
 - In production, run a migration to rename the table
 - Old data remains compatible via backwards compatibility aliases

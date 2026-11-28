@@ -40,6 +40,7 @@ python -c "from scripts.port_authority import PortAuthority; PortAuthority('trac
 ```
 
 Output:
+
 ```
 ============================================================
 PORT AUTHORITY - TRACTUM
@@ -59,6 +60,7 @@ python scripts/port_authority.py tractum api --hosts
 ```
 
 This adds entries to your hosts file:
+
 ```
 127.0.0.1       tractum-api.pa.local
 127.0.0.1       tractum-dashboard.pa.local
@@ -67,6 +69,7 @@ This adds entries to your hosts file:
 ```
 
 Then you can use friendly URLs:
+
 - `http://tractum-api.pa.local` instead of `http://localhost:8001`
 - `http://tractum-dashboard.pa.local` instead of `http://localhost:3000`
 
@@ -79,15 +82,15 @@ Then you can use friendly URLs:
 
 ## Tractum Services
 
-| Service | Default Port | Allocated Port | DNS Name |
-|----------|-------------|---------------|----------|
-| API | 8000 | 8001* | tractum-api.pa.local |
-| Dashboard | 3000 | 3000 | tractum-dashboard.pa.local |
-| Postgres | 5432 | 5432 | tractum-postgres.pa.local |
-| Redis | 6379 | 6379 | tractum-redis.pa.local |
-| NATS | 4222 | (auto) | tractum-nats.pa.local |
+| Service   | Default Port | Allocated Port | DNS Name                   |
+| --------- | ------------ | -------------- | -------------------------- |
+| API       | 8000         | 8001\*         | tractum-api.pa.local       |
+| Dashboard | 3000         | 3000           | tractum-dashboard.pa.local |
+| Postgres  | 5432         | 5432           | tractum-postgres.pa.local  |
+| Redis     | 6379         | 6379           | tractum-redis.pa.local     |
+| NATS      | 4222         | (auto)         | tractum-nats.pa.local      |
 
-*Port 8000 was taken, so PORT AUTHORITY allocated 8001 automatically.
+\*Port 8000 was taken, so PORT AUTHORITY allocated 8001 automatically.
 
 ## Starting Tractum with PORT AUTHORITY
 
@@ -142,16 +145,19 @@ python scripts/port_authority.py tractum api
 After updating hosts file, flush DNS:
 
 **Windows:**
+
 ```bash
 ipconfig /flushdns
 ```
 
 **Linux:**
+
 ```bash
 sudo systemd-resolve --flush-caches
 ```
 
 **Mac:**
+
 ```bash
 sudo dscacheutil -flushcache
 sudo killall -HUP mDNSResponder
@@ -160,6 +166,7 @@ sudo killall -HUP mDNSResponder
 ### Reset All Allocations
 
 Delete the state file:
+
 ```bash
 rm ~/.port-authority/state.json
 ```
