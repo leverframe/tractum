@@ -100,15 +100,15 @@ class Coordinator:
 
 ## Coordinator vs Swarm
 
-| | **Coordinator** | **Swarm** |
-|---|---|---|
-| Topology | Hierarchical (1 manager → N specialists) | Peer-to-peer (N agents, one question) |
-| Goal | Divide-and-conquer a multi-part task | Multiple perspectives, then agree |
-| Execution | Dependency-respecting, partial parallelism | All agents run in parallel |
-| Output | Synthesized answer from parts | Consensus result (+ optional Debate revision round) |
-| Signed receipt | **No** | **Yes** (`ConsensusReceipt`, Ed25519 / ML-DSA) |
-| Streaming events | **No** (`on_event` not wired) | **Yes** (`AgentCompleted`, `ConsensusResolved`) |
-| Use when | Pipeline / role specialization | Adversarial check, confidence boost, verifiable receipt |
+|                  | **Coordinator**                            | **Swarm**                                               |
+| ---------------- | ------------------------------------------ | ------------------------------------------------------- |
+| Topology         | Hierarchical (1 manager → N specialists)   | Peer-to-peer (N agents, one question)                   |
+| Goal             | Divide-and-conquer a multi-part task       | Multiple perspectives, then agree                       |
+| Execution        | Dependency-respecting, partial parallelism | All agents run in parallel                              |
+| Output           | Synthesized answer from parts              | Consensus result (+ optional Debate revision round)     |
+| Signed receipt   | **No**                                     | **Yes** (`ConsensusReceipt`, Ed25519 / ML-DSA)          |
+| Streaming events | **No** (`on_event` not wired)              | **Yes** (`AgentCompleted`, `ConsensusResolved`)         |
+| Use when         | Pipeline / role specialization             | Adversarial check, confidence boost, verifiable receipt |
 
 The verifiability moat — signed receipts, transparency log, `OnEvent` streaming — lives on `Swarm`, not here. Coordinator is the non-consensus execution path. If your downstream needs a signed artifact, wrap the Coordinator output yourself or use a Swarm at the synthesis step.
 

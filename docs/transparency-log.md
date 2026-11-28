@@ -13,7 +13,7 @@ An **append-only Merkle log of consensus receipts**, anchored to Nostr. Certific
 
 Per-receipt Ed25519 signatures prove **integrity** — the receipt wasn't altered. They don't prove **completeness** — nothing prevents Tractum from quietly hiding, removing, or re-issuing a receipt.
 
-The transparency log closes that gap on a separate trust axis: it commits to *the set of decisions that exist*. Once a log root is published, a receipt that disappears leaves a detectable gap; a receipt that was secretly altered invalidates every proof that referenced it.
+The transparency log closes that gap on a separate trust axis: it commits to _the set of decisions that exist_. Once a log root is published, a receipt that disappears leaves a detectable gap; a receipt that was secretly altered invalidates every proof that referenced it.
 
 ---
 
@@ -51,16 +51,16 @@ from tractum.transparency import (
 )
 ```
 
-| Symbol | Signature | Notes |
-|---|---|---|
-| `TransparencyLog(name="tractum")` | constructor | One logical log per Nostr key. In-memory. |
-| `log.append(receipt)` | `-> int` | Appends the receipt's leaf hash; returns the 0-based leaf index. Only mutator. |
-| `log.size` | `@property -> int` | Current leaf count. |
-| `log.root` | `@property -> bytes` | 32-byte Merkle root; `SHA-256(b"")` when empty. |
-| `log.inclusion_proof(leaf_index)` | `-> InclusionProof` | Raises `IndexError` if out of range. |
-| `TransparencyLog.verify_inclusion(receipt, proof, expected_root)` | `@staticmethod -> bool` | Standalone — no log instance needed. |
-| `LogAnchor(tree_size, root, published_at, nostr_event_id=None)` | dataclass | `.to_dict()` produces the wire payload. |
-| `to_log_anchor_event(anchor, private_key_hex, log_name="", created_at=None)` | transport helper | Returns a `NostrEvent` (kind 30078). |
+| Symbol                                                                       | Signature               | Notes                                                                          |
+| ---------------------------------------------------------------------------- | ----------------------- | ------------------------------------------------------------------------------ |
+| `TransparencyLog(name="tractum")`                                            | constructor             | One logical log per Nostr key. In-memory.                                      |
+| `log.append(receipt)`                                                        | `-> int`                | Appends the receipt's leaf hash; returns the 0-based leaf index. Only mutator. |
+| `log.size`                                                                   | `@property -> int`      | Current leaf count.                                                            |
+| `log.root`                                                                   | `@property -> bytes`    | 32-byte Merkle root; `SHA-256(b"")` when empty.                                |
+| `log.inclusion_proof(leaf_index)`                                            | `-> InclusionProof`     | Raises `IndexError` if out of range.                                           |
+| `TransparencyLog.verify_inclusion(receipt, proof, expected_root)`            | `@staticmethod -> bool` | Standalone — no log instance needed.                                           |
+| `LogAnchor(tree_size, root, published_at, nostr_event_id=None)`              | dataclass               | `.to_dict()` produces the wire payload.                                        |
+| `to_log_anchor_event(anchor, private_key_hex, log_name="", created_at=None)` | transport helper        | Returns a `NostrEvent` (kind 30078).                                           |
 
 `InclusionProof` fields: `leaf_index: int`, `tree_size: int`, `audit_path: list[bytes]`.
 

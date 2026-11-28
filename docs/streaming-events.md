@@ -5,9 +5,9 @@ description: Observe consensus as it happens. Wire an on_event callback into a S
 
 # Streaming events
 
-A `Swarm.process(task)` call returns the final `ConsensusResult` — the answer. But the *process* — agents answering one by one, agreement tightening, rounds unfolding — is a black box by default.
+A `Swarm.process(task)` call returns the final `ConsensusResult` — the answer. But the _process_ — agents answering one by one, agreement tightening, rounds unfolding — is a black box by default.
 
-**Streaming events open that box.** Wire an `on_event` callback into a `Swarm` (or flip `stream=True` in an adapter) and you observe consensus *as it happens*: per-agent answers and confidence the moment each lands, the resolved consensus at the end, and (when signing) the signed receipt as a final attestation.
+**Streaming events open that box.** Wire an `on_event` callback into a `Swarm` (or flip `stream=True` in an adapter) and you observe consensus _as it happens_: per-agent answers and confidence the moment each lands, the resolved consensus at the end, and (when signing) the signed receipt as a final attestation.
 
 This is **observable consensus** — a UI can render agents answering live, a transparency log can ingest each result, a debug harness can see where a run diverged.
 
@@ -113,13 +113,13 @@ The adapter sets `swarm.on_event` to forward each event to `ctx.yield_output(eve
 
 ## Adapter support matrix
 
-| Adapter | Streaming? | Mechanism |
-|---|---|---|
-| **Vanilla `Swarm`** | Yes | `on_event=` callback (inline, awaited) |
-| **MAF** | Yes | `stream=True` → `intermediate_output_from`, consumed via `workflow.run(prompt, stream=True)` |
-| **LangGraph** | Yes | `stream=True` → `get_stream_writer()`, consumed via `graph.astream(..., stream_mode="custom")` |
-| **CrewAI** | No | Adapter has no `stream` parameter; consensus is a black box until the step returns |
-| **Custom adapter** | Trivial | Set `swarm.on_event = your_async_callback` per-invoke, restore in `finally` (copy the MAF pattern) |
+| Adapter             | Streaming? | Mechanism                                                                                          |
+| ------------------- | ---------- | -------------------------------------------------------------------------------------------------- |
+| **Vanilla `Swarm`** | Yes        | `on_event=` callback (inline, awaited)                                                             |
+| **MAF**             | Yes        | `stream=True` → `intermediate_output_from`, consumed via `workflow.run(prompt, stream=True)`       |
+| **LangGraph**       | Yes        | `stream=True` → `get_stream_writer()`, consumed via `graph.astream(..., stream_mode="custom")`     |
+| **CrewAI**          | No         | Adapter has no `stream` parameter; consensus is a black box until the step returns                 |
+| **Custom adapter**  | Trivial    | Set `swarm.on_event = your_async_callback` per-invoke, restore in `finally` (copy the MAF pattern) |
 
 ---
 
