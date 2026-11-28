@@ -1,57 +1,70 @@
-"use client"
+"use client";
 
-import { useQuery } from "@tanstack/react-query"
-import { apiClient } from "@/lib/api-client"
-import { useAppStore } from "@/lib/store"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { Badge } from "@/components/ui/badge"
-import { DollarSign, FileText } from "lucide-react"
+import { useQuery } from "@tanstack/react-query";
+import { apiClient } from "@/lib/api-client";
+import { useAppStore } from "@/lib/store";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import { DollarSign, FileText } from "lucide-react";
 
 export default function BillingPage() {
-  const currentTenant = useAppStore((state) => state.currentTenant)
+  const currentTenant = useAppStore((state) => state.currentTenant);
 
   const { data: usage } = useQuery({
     queryKey: ["usage", currentTenant?.id],
     queryFn: () => apiClient.getUsage(currentTenant!.id),
     enabled: !!currentTenant,
-  })
+  });
 
   const { data: invoices } = useQuery({
     queryKey: ["invoices", currentTenant?.id],
     queryFn: () => apiClient.getInvoices(currentTenant!.id),
     enabled: !!currentTenant,
-  })
+  });
 
   const getInvoiceStatusColor = (status: string) => {
     switch (status) {
       case "paid":
-        return "success"
+        return "success";
       case "pending":
-        return "warning"
+        return "warning";
       case "failed":
-        return "destructive"
+        return "destructive";
       default:
-        return "secondary"
+        return "secondary";
     }
-  }
+  };
 
   if (!currentTenant) {
     return (
       <Card>
         <CardContent className="flex flex-col items-center justify-center py-12">
           <DollarSign className="w-16 h-16 text-gray-400 mb-4" />
-          <p className="text-lg font-medium text-gray-900 dark:text-white">Select a tenant first</p>
+          <p className="text-lg font-medium text-gray-900 dark:text-white">
+            Select a tenant first
+          </p>
         </CardContent>
       </Card>
-    )
+    );
   }
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Billing</h1>
-        <p className="text-gray-600 dark:text-gray-400">Usage and invoices for {currentTenant.name}</p>
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          Billing
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400">
+          Usage and invoices for {currentTenant.name}
+        </p>
       </div>
 
       {/* Usage Stats */}
@@ -67,7 +80,9 @@ export default function BillingPage() {
             <div className="text-2xl font-bold text-gray-900 dark:text-white">
               {usage?.messages?.toLocaleString() || 0}
             </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400">This month</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              This month
+            </p>
           </CardContent>
         </Card>
 
@@ -82,7 +97,9 @@ export default function BillingPage() {
             <div className="text-2xl font-bold text-gray-900 dark:text-white">
               {usage?.tokens?.toLocaleString() || 0}
             </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400">This month</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              This month
+            </p>
           </CardContent>
         </Card>
 
@@ -99,7 +116,9 @@ export default function BillingPage() {
                 ? "Unlimited"
                 : currentTenant.max_messages_per_month.toLocaleString()}
             </div>
-            <p className="text-xs text-gray-500 dark:text-gray-400">Monthly limit</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400">
+              Monthly limit
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -124,27 +143,36 @@ export default function BillingPage() {
               <TableBody>
                 {invoices.map((invoice) => (
                   <TableRow key={invoice.id}>
-                    <TableCell className="font-medium">{invoice.invoice_number}</TableCell>
+                    <TableCell className="font-medium">
+                      {invoice.invoice_number}
+                    </TableCell>
                     <TableCell>
                       {new Date(invoice.period_start).toLocaleDateString()} -{" "}
                       {new Date(invoice.period_end).toLocaleDateString()}
                     </TableCell>
                     <TableCell>
-                      {invoice.currency === "usd" ? "$" : ""}{invoice.amount.toFixed(2)}
+                      {invoice.currency === "usd" ? "$" : ""}
+                      {invoice.amount.toFixed(2)}
                     </TableCell>
                     <TableCell>
-                      <Badge variant={getInvoiceStatusColor(invoice.status)}>{invoice.status}</Badge>
+                      <Badge variant={getInvoiceStatusColor(invoice.status)}>
+                        {invoice.status}
+                      </Badge>
                     </TableCell>
-                    <TableCell>{new Date(invoice.created_at).toLocaleDateString()}</TableCell>
+                    <TableCell>
+                      {new Date(invoice.created_at).toLocaleDateString()}
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>
             </Table>
           ) : (
-            <p className="text-center text-gray-500 dark:text-gray-400 py-8">No invoices yet</p>
+            <p className="text-center text-gray-500 dark:text-gray-400 py-8">
+              No invoices yet
+            </p>
           )}
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

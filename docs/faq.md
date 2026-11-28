@@ -27,7 +27,7 @@ The signatures make receipts tamper-evident. Nostr makes them globally publishab
 
 ## How is this different from ensemble methods?
 
-Ensembles run N model calls and **average** the results into a single confident answer. Tractum runs N specialist agents, **surfaces disagreement** explicitly, and signs the consensus *with the trace intact* — who said what, where they diverged, how the strategy resolved it.
+Ensembles run N model calls and **average** the results into a single confident answer. Tractum runs N specialist agents, **surfaces disagreement** explicitly, and signs the consensus _with the trace intact_ — who said what, where they diverged, how the strategy resolved it.
 
 The receipt includes per-agent responses and the disagreement score, not just the final answer. See the [ensemble comparison](https://tractum.dev/#not-ensemble) on the landing page.
 
@@ -45,11 +45,11 @@ Adapters exist for [LangGraph, CrewAI, MAF, and Nostr transport](adapters.md). D
 
 Rough numbers at Haiku/Sonnet pricing:
 
-| Path | Setup | Cost per consensus |
-|---|---|---|
-| Cheap (WeightedVote · Haiku · 256 tok) | 3 agents, 1 round | ~$0.01 |
-| Debate (Haiku · 1k tok) | 3 agents, 2 rounds | ~$0.30 |
-| Premium (Debate · Sonnet · 2k tok) | 3 agents, 2 rounds | ~$1.50 |
+| Path                                   | Setup              | Cost per consensus |
+| -------------------------------------- | ------------------ | ------------------ |
+| Cheap (WeightedVote · Haiku · 256 tok) | 3 agents, 1 round  | ~$0.01             |
+| Debate (Haiku · 1k tok)                | 3 agents, 2 rounds | ~$0.30             |
+| Premium (Debate · Sonnet · 2k tok)     | 3 agents, 2 rounds | ~$1.50             |
 
 100 questions/day at the debate path ≈ $90/month. Use it for what's worth it; skip it when single-model confidence is enough. See [Tradeoffs](https://tractum.dev/#tradeoffs) on the landing.
 

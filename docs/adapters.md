@@ -13,12 +13,12 @@ Four adapters ship today. All of them keep the core `tractum` package
 dependency-free: the host framework is imported lazily, so `pip install
 tractum` never pulls LangGraph, CrewAI, MAF, or Nostr in.
 
-| Adapter | Install | Use when |
-|---|---|---|
-| **Buzz** (Nostr transport) | `tractum[nostr]` | You want consensus events on the open Nostr wire. |
-| **LangGraph** | `tractum[langgraph]` | You own a `StateGraph` and want consensus as one node. |
-| **CrewAI** | `tractum[crewai]` | Your crew calls Tractum as a `@tool` or `Flow`. |
-| **Microsoft Agent Framework** | `tractum[maf]` | You want consensus as a typed MAF executor / workflow. |
+| Adapter                       | Install              | Use when                                               |
+| ----------------------------- | -------------------- | ------------------------------------------------------ |
+| **Buzz** (Nostr transport)    | `tractum[nostr]`     | You want consensus events on the open Nostr wire.      |
+| **LangGraph**                 | `tractum[langgraph]` | You own a `StateGraph` and want consensus as one node. |
+| **CrewAI**                    | `tractum[crewai]`    | Your crew calls Tractum as a `@tool` or `Flow`.        |
+| **Microsoft Agent Framework** | `tractum[maf]`       | You want consensus as a typed MAF executor / workflow. |
 
 ---
 
@@ -140,7 +140,7 @@ CrewAI shines at multi-role orchestration with great DX. Its coordination
 story is shallow, though — tasks run in sequence, a synthesizer agent
 writes the final answer, and there's no signed agreement. The Tractum
 adapter inverts the killer demo: instead of Tractum calling CrewAI, a
-CrewAI crew *calls* Tractum for agreement.
+CrewAI crew _calls_ Tractum for agreement.
 
 Two entry points, both with lazy imports:
 

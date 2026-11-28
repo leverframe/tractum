@@ -16,6 +16,7 @@ _No changes yet._
 ## [0.6.1] — 2026-11-22
 
 ### Fixed
+
 - **Default model refreshed** — `claude-3-5-sonnet-20241022` →
   `claude-sonnet-5` everywhere it ships as the fallback: `AgentConfig.model`,
   the `CoordinatorConfig` planner default, the MCP server and api
@@ -25,6 +26,7 @@ _No changes yet._
 ## [0.6.0] — 2026-11-20
 
 ### Changed
+
 - **MCP server migrated to mcp 2.x** — the `mcp` extra now pins
   `>=2.0.0,<3`; `mcp.server.fastmcp.FastMCP` (removed in 2.x) →
   `mcp.server.mcpserver.MCPServer`; `server.call_tool()` returns a
@@ -33,6 +35,7 @@ _No changes yet._
   streamable-http `run()`) are unchanged.
 
 ### Fixed
+
 - Dashboard dependency sweep — React types aligned with the React 19
   runtime (`@types/react`/`@types/react-dom` 19.3.0), eslint 10.15,
   eslint-config-next 16.4.6, react-query 5.107, and the `minimatch`
@@ -46,6 +49,7 @@ Feature release — **.curt linkage, self-verifying MCP receipts, and the
 claudeway → tractum rename.**
 
 ### Added
+
 - **.curt linkage** (`tractum.curt_link`): a quorum receipt is the DECISION;
   the .curt transcript(s) the consensus was computed from are the EVIDENCE.
   `build_curt_transcript` renders a `ConsensusResult` as a conforming .curt
@@ -76,6 +80,7 @@ claudeway → tractum rename.**
   actually honors it).
 
 ### Fixed
+
 - **MCP docs matched to the code** (`docs/mcp-server.md`): specialists
   take `instructions` (not `perspective`); removed the phantom
   `"sign": true` parameter; removed the nonexistent
@@ -88,6 +93,7 @@ claudeway → tractum rename.**
   Ids now embed the full conversation id (regression test added).
 
 ### Changed
+
 - **Renamed: claudeway → tractum.** The Python package, module, and CLI
   are now `tractum`.
   - Imports: `from claudeway import ...` → `from tractum import ...`;
@@ -131,15 +137,15 @@ pip install tractum       # on PyPI as of 0.5.0
 from claudeway import Swarm    from tractum import Swarm
 ```
 
-| Old | New |
-| --- | --- |
-| `from claudeway import ...` | `from tractum import ...` |
-| `claudeway-mcp` | `tractum-mcp` |
-| `CLAUDEWAY_SIGNING_KEY` | `TRACTUM_SIGNING_KEY` |
-| `CLAUDEWAY_TEST_RELAY` | `TRACTUM_TEST_RELAY` |
-| `CLAUDEWAY_TEST_LANGGRAPH` | `TRACTUM_TEST_LANGGRAPH` |
-| `CLAUDEWAY_RUN_LIVE` | `TRACTUM_RUN_LIVE` |
-| `CLAUDEWAY_DEMO_RELAY` | `TRACTUM_DEMO_RELAY` |
+| Old                                                                                         | New                                         |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| `from claudeway import ...`                                                                 | `from tractum import ...`                   |
+| `claudeway-mcp`                                                                             | `tractum-mcp`                               |
+| `CLAUDEWAY_SIGNING_KEY`                                                                     | `TRACTUM_SIGNING_KEY`                       |
+| `CLAUDEWAY_TEST_RELAY`                                                                      | `TRACTUM_TEST_RELAY`                        |
+| `CLAUDEWAY_TEST_LANGGRAPH`                                                                  | `TRACTUM_TEST_LANGGRAPH`                    |
+| `CLAUDEWAY_RUN_LIVE`                                                                        | `TRACTUM_RUN_LIVE`                          |
+| `CLAUDEWAY_DEMO_RELAY`                                                                      | `TRACTUM_DEMO_RELAY`                        |
 | `claudeway.consensus.*` / `claudeway.agent-statement.v1` / `claudeway.receipt.v1` type tags | **unchanged** — backward-compat wire format |
 
 ## [0.4.0] — 2026-10-01
@@ -150,6 +156,7 @@ becomes a countable multi-sig: every agent signs its own stance, and anyone
 can verify the signatures individually.
 
 ### Added
+
 - **Per-agent signed statements.** Every agent in a `Swarm` now gets a
   signing keypair (pinned via `AgentConfig.signing_key`, otherwise an
   ephemeral key is provisioned per swarm) and signs a
@@ -164,7 +171,7 @@ can verify the signatures individually.
   receipts are produced unchanged when no statements exist — the verifier
   handles both forever.
 - **`verify_receipt_detailed(receipt, expected_operator_pubkey="",
-  expected_agent_pubkeys={})`** — full verification report: aggregate
+expected_agent_pubkeys={})`** — full verification report: aggregate
   signature, per-statement signature/hash checks, statement↔response
   cross-checks (`response-mismatch:answer`/`confidence`), cross-task replay
   detection (`task-id-mismatch`), operator and per-agent key pinning
@@ -180,6 +187,7 @@ can verify the signatures individually.
   full statement-by-statement verdict, not just a boolean.
 
 ### Security
+
 - New adversarial tests for the statement attack surface: operator
   fabrication of statements under fresh keys (caught by per-agent pinning),
   statement tampering inside a signed receipt (aggregate hash guard),
@@ -191,6 +199,7 @@ can verify the signatures individually.
   fabrication detectable. See `docs/THREAT-MODEL.md`.
 
 ### Compatibility
+
 - v1 receipts verify exactly as before; `verify_receipt` semantics are
   unchanged. Responses without statements keep their v1 dict shape
   byte-for-byte, so existing payload hashes and transparency-log anchors
@@ -201,6 +210,7 @@ can verify the signatures individually.
 Maintenance release — CI/docs only, no package behavior change.
 
 ### Changed
+
 - **Publish workflow uses OIDC trusted publishing (no API tokens).** PyPI
   trusted-publisher configuration corrected; the GitHub Actions workflow
   now mints a short-lived OIDC token at publish time. Removes the need
@@ -214,6 +224,7 @@ Maintenance release — CI/docs only, no package behavior change.
 Hotfix release. Unblocks `pip install claudeway[benchmark]` on Windows.
 
 ### Fixed
+
 - **`[benchmark]` extra no longer pulls `litellm`**. The `litellm>=1.18` dep
   transitively requires a Rust build toolchain that fails on Windows. The
   killer demo (`examples/killer_demo.py`) now imports litellm lazily with a
@@ -232,6 +243,7 @@ benchmark showing Claudeway beats both single Claude and CrewAI on hard
 questions.
 
 ### Added
+
 - **LangGraph adapter** (`claudeway.adapters.langgraph`): drop Claudeway
   consensus into a `StateGraph` as a single node. Two entry points —
   `make_consensus_node(swarm)` and `build_consensus_graph(swarm)`. Lazy
@@ -271,6 +283,7 @@ questions.
   Mann-Whitney U for non-parametric significance.
 
 ### Fixed
+
 - **Stable signing key** in adapters: the LangGraph/CrewAI/MAF adapters now
   reuse a stable Ed25519 key across runs instead of regenerating per call,
   so signatures verify across runs and receipts are diffable.
@@ -293,11 +306,13 @@ questions.
   imports `coincurve`. Fixed.
 
 ### Changed
+
 - README rewritten around the killer demo and LangGraph adapter.
 
 ## [0.2.0] — 2026-07-25
 
 ### Added
+
 - **Verifiable multi-agent consensus for Claude** — initial public release.
 - **Real consensus** — `WeightedVote` (cheap, default) and `Debate`
   (revision round when agents disagree, cost-guarded early-exit).
@@ -324,6 +339,7 @@ questions.
 ## [0.1.0] — 2026-07-24
 
 ### Added
+
 - Initial pre-release platform implementation (Next.js dashboard, FastAPI
   runner scaffolding, port management). Superseded by the 0.2.0 rewrite
   around the SDK + consensus wedge. The dashboard and multi-tenant runner

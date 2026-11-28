@@ -42,12 +42,12 @@ reverse proxy / tunnel auth before exposing it beyond localhost.
 
 ## Environment variables
 
-| Variable | Effect |
-|----------|--------|
-| `ANTHROPIC_API_KEY` | Claude API key for live consensus runs. |
-| `TRACTUM_SIGNING_KEY` | Hex Ed25519 **private** key. When set, every receipt is signed by this stable operator key — verifiers pin the matching public key once. |
-| `TRACTUM_REQUIRE_PINNED_KEY` | `1`/`true`: refuse to sign unless `TRACTUM_SIGNING_KEY` is set. For deployments that must never ship an ephemeral-signed receipt. |
-| `TRACTUM_MCP_DRY_RUN` | `1`/`true`: every `reach_consensus` call runs offline stub agents (see below). |
+| Variable                     | Effect                                                                                                                                   |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `ANTHROPIC_API_KEY`          | Claude API key for live consensus runs.                                                                                                  |
+| `TRACTUM_SIGNING_KEY`        | Hex Ed25519 **private** key. When set, every receipt is signed by this stable operator key — verifiers pin the matching public key once. |
+| `TRACTUM_REQUIRE_PINNED_KEY` | `1`/`true`: refuse to sign unless `TRACTUM_SIGNING_KEY` is set. For deployments that must never ship an ephemeral-signed receipt.        |
+| `TRACTUM_MCP_DRY_RUN`        | `1`/`true`: every `reach_consensus` call runs offline stub agents (see below).                                                           |
 
 ## Tools exposed
 
@@ -57,14 +57,22 @@ Run a multi-agent swarm and return a signed receipt.
 
 ```jsonc
 {
-  "question":    "Active-active Postgres or eventual consistency for payments?",
+  "question": "Active-active Postgres or eventual consistency for payments?",
   "specialists": [
-    {"name": "StrongConsistency", "role": "Distributed Systems Engineer", "instructions": "..."},
-    {"name": "Operations",        "role": "SRE / Platform Lead",          "instructions": "..."},
-    {"name": "Pragmatist",        "role": "Staff Engineer",               "instructions": "..."}
+    {
+      "name": "StrongConsistency",
+      "role": "Distributed Systems Engineer",
+      "instructions": "...",
+    },
+    {
+      "name": "Operations",
+      "role": "SRE / Platform Lead",
+      "instructions": "...",
+    },
+    { "name": "Pragmatist", "role": "Staff Engineer", "instructions": "..." },
   ],
-  "strategy":    "debate",     // or "weighted_vote" (default)
-  "dry_run":     false         // offline stub agents, no API calls (see below)
+  "strategy": "debate", // or "weighted_vote" (default)
+  "dry_run": false, // offline stub agents, no API calls (see below)
 }
 ```
 
@@ -87,10 +95,12 @@ consistency, and the quorum count.
 
 ```jsonc
 {
-  "receipt": { /* the full receipt object from reach_consensus */ },
+  "receipt": {
+    /* the full receipt object from reach_consensus */
+  },
   // optional pinning — see below
   "expected_operator_pubkey": "hex…",
-  "expected_agent_pubkeys": { "Alice": "hex…", "Bob": "hex…" }
+  "expected_agent_pubkeys": { "Alice": "hex…", "Bob": "hex…" },
 }
 ```
 
@@ -105,7 +115,7 @@ you know, and per-statement failures come back named (`key-mismatch`,
 `task-id-mismatch`, `response-mismatch:answer`, `signature-invalid`).
 `expected_agent_pubkeys` does the same per agent: it checks that each
 agent's statement was signed by the key you know for that agent, not just
-by *some* key the payload carries.
+by _some_ key the payload carries.
 
 ## Dry-run mode
 
@@ -129,7 +139,7 @@ Add Tractum as an MCP server in
   "mcpServers": {
     "tractum": {
       "command": "tractum-mcp",
-      "env":     { "ANTHROPIC_API_KEY": "sk-ant-..." }
+      "env": { "ANTHROPIC_API_KEY": "sk-ant-..." }
     }
   }
 }
@@ -147,7 +157,7 @@ Add to `~/.cursor/mcp.json`:
   "mcpServers": {
     "tractum": {
       "command": "tractum-mcp",
-      "env":     { "ANTHROPIC_API_KEY": "sk-ant-..." }
+      "env": { "ANTHROPIC_API_KEY": "sk-ant-..." }
     }
   }
 }

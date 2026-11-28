@@ -59,7 +59,7 @@ If you're seeing this often, raise `max_tokens` on the offending `AgentConfig` (
 
 Verified by `test_payload_tamper_invalidates_signature`, `test_signature_tamper_invalidates`, `test_wrong_public_key_rejects`, `test_payload_hash_mismatch_rejects` — mirrored for ML-DSA in `test_signing_pq.py`.
 
-**Recovery:** treat any `False` as untrusted. Never display the answer as consensus. Re-issue or investigate. The signature doesn't tell you *what* changed, only *that* it did — diff the payload against a known-good copy.
+**Recovery:** treat any `False` as untrusted. Never display the answer as consensus. Re-issue or investigate. The signature doesn't tell you _what_ changed, only _that_ it did — diff the payload against a known-good copy.
 
 ---
 
@@ -67,11 +67,11 @@ Verified by `test_payload_tamper_invalidates_signature`, `test_signature_tamper_
 
 Three lazy imports raise clear install hints:
 
-| Missing | Error | Install |
-|---|---|---|
-| `coincurve` (Nostr transport) | `ImportError("Nostr transport requires coincurve (BIP-340 Schnorr). Install with: pip install tractum[nostr]")` | `pip install tractum[nostr]` |
-| `dilithium-py` (post-quantum backend) | `ImportError("ML-DSA-65 backend requires dilithium-py… pip install tractum[pq]")` | `pip install tractum[pq]` |
-| `mcp` (MCP client) | `ImportError("MCP support requires the 'mcp' package… pip install tractum[mcp]")` | `pip install tractum[mcp]` |
+| Missing                               | Error                                                                                                           | Install                      |
+| ------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ---------------------------- |
+| `coincurve` (Nostr transport)         | `ImportError("Nostr transport requires coincurve (BIP-340 Schnorr). Install with: pip install tractum[nostr]")` | `pip install tractum[nostr]` |
+| `dilithium-py` (post-quantum backend) | `ImportError("ML-DSA-65 backend requires dilithium-py… pip install tractum[pq]")`                               | `pip install tractum[pq]`    |
+| `mcp` (MCP client)                    | `ImportError("MCP support requires the 'mcp' package… pip install tractum[mcp]")`                               | `pip install tractum[mcp]`   |
 
 ---
 

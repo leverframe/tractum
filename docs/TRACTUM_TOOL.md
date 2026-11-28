@@ -77,20 +77,20 @@ response = await orchestrator.think(
         "type": "string",
         "enum": ["deploy_swarm", "submit_task", "get_status", "list_swarms"]
       },
-      "swarm_name": {"type": "string"},
+      "swarm_name": { "type": "string" },
       "agents": {
         "type": "array",
         "items": {
           "type": "object",
           "properties": {
-            "name": {"type": "string"},
-            "role": {"type": "string"},
-            "instructions": {"type": "string"}
+            "name": { "type": "string" },
+            "role": { "type": "string" },
+            "instructions": { "type": "string" }
           }
         }
       },
-      "swarm_id": {"type": "string"},
-      "task": {"type": "string"}
+      "swarm_id": { "type": "string" },
+      "task": { "type": "string" }
     }
   }
 }
@@ -99,6 +99,7 @@ response = await orchestrator.think(
 ## Actions
 
 ### deploy_swarm
+
 Create a new swarm with specialized agents.
 
 ```python
@@ -121,6 +122,7 @@ tractum(
 ```
 
 ### submit_task
+
 Send a task to an existing swarm.
 
 ```python
@@ -132,6 +134,7 @@ tractum(
 ```
 
 ### get_status
+
 Check the status of a swarm.
 
 ```python
@@ -142,6 +145,7 @@ tractum(
 ```
 
 ### list_swarms
+
 List all active swarms.
 
 ```python
@@ -174,13 +178,13 @@ When Claude has the Tractum tool, it can:
 
 ## Benefits
 
-| Without Tractum Tool | With Tractum Tool |
-|------------------------|---------------------|
-| Claude thinks alone | Claude spawns specialists |
-| Sequential tool use | Parallel agent execution |
-| One perspective | Multiple specialized perspectives |
-| Manual swarm deployment | Automatic swarm deployment |
-| You coordinate | Claude coordinates |
+| Without Tractum Tool    | With Tractum Tool                 |
+| ----------------------- | --------------------------------- |
+| Claude thinks alone     | Claude spawns specialists         |
+| Sequential tool use     | Parallel agent execution          |
+| One perspective         | Multiple specialized perspectives |
+| Manual swarm deployment | Automatic swarm deployment        |
+| You coordinate          | Claude coordinates                |
 
 ## Example Conversation
 

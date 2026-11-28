@@ -1,22 +1,25 @@
-{% extends "base.html" %}
-
-{% block announce %}
-  <a href="https://github.com/leverframe/tractum/releases/tag/v0.6.1"><strong>v0.6.1</strong>&nbsp;·&nbsp;MCP on mcp 2.x &middot; claude-sonnet-5 default&nbsp;·&nbsp;release notes ↗</a>
-{% endblock %}
-
-{% block footer %}
-{{ super() }}
+{% extends "base.html" %} {% block announce %}
+<a href="https://github.com/leverframe/tractum/releases/tag/v0.6.1"
+  ><strong>v0.6.1</strong>&nbsp;·&nbsp;MCP on mcp 2.x &middot; claude-sonnet-5
+  default&nbsp;·&nbsp;release notes ↗</a
+>
+{% endblock %} {% block footer %} {{ super() }}
 <footer class="tractum-site-footer">
   <div class="tsf-inner">
-
     <div class="tsf-row tsf-brand">
-      <svg class="tsf-mark" viewBox="0 0 264 240" width="24" height="22" aria-hidden="true">
-        <rect x="24" y="84" width="24" height="108" rx="12" fill="#3D3D3D"/>
-        <rect x="72" y="24" width="24" height="168" rx="12" fill="#FFB000"/>
-        <rect x="120" y="24" width="24" height="168" rx="12" fill="#FFB000"/>
-        <rect x="168" y="24" width="24" height="168" rx="12" fill="#FFB000"/>
-        <rect x="216" y="84" width="24" height="108" rx="12" fill="#3D3D3D"/>
-        <rect x="24" y="192" width="216" height="24" rx="12" fill="#FFFFFF"/>
+      <svg
+        class="tsf-mark"
+        viewBox="0 0 264 240"
+        width="24"
+        height="22"
+        aria-hidden="true"
+      >
+        <rect x="24" y="84" width="24" height="108" rx="12" fill="#3D3D3D" />
+        <rect x="72" y="24" width="24" height="168" rx="12" fill="#FFB000" />
+        <rect x="120" y="24" width="24" height="168" rx="12" fill="#FFB000" />
+        <rect x="168" y="24" width="24" height="168" rx="12" fill="#FFB000" />
+        <rect x="216" y="84" width="24" height="108" rx="12" fill="#3D3D3D" />
+        <rect x="24" y="192" width="216" height="24" rx="12" fill="#FFFFFF" />
       </svg>
       <span class="tsf-wordmark">TRACTUM<span class="tsf-dot">.</span></span>
       <span class="tsf-product">/ docs</span>
@@ -24,9 +27,15 @@
 
     <div class="tsf-row tsf-links">
       <a href="https://github.com/leverframe/tractum#readme">readme</a>
-      <a href="https://github.com/leverframe/tractum/blob/main/CHANGELOG.md">changelog</a>
-      <a href="https://github.com/leverframe/tractum/security/policy">security</a>
-      <a href="https://github.com/leverframe/tractum/blob/main/LICENSE">license</a>
+      <a href="https://github.com/leverframe/tractum/blob/main/CHANGELOG.md"
+        >changelog</a
+      >
+      <a href="https://github.com/leverframe/tractum/security/policy"
+        >security</a
+      >
+      <a href="https://github.com/leverframe/tractum/blob/main/LICENSE"
+        >license</a
+      >
       <a href="https://github.com/leverframe/tractum">source ↗</a>
     </div>
 
@@ -42,18 +51,17 @@
       <a href="https://x.com/tractumdev">@tractumdev ↗</a>
       <span class="tsf-legal">© 2026 Jordan Newell</span>
     </div>
-
   </div>
 </footer>
 
 <style>
   .tractum-site-footer {
-    border-top: 1px solid #1F1F1F;
-    background: #0A0A0A;
+    border-top: 1px solid #1f1f1f;
+    background: #0a0a0a;
     padding: 28px 24px 24px;
     font-family: "JetBrains Mono", "SF Mono", Menlo, monospace;
     font-size: 12px;
-    color: #A0A0A0;
+    color: #a0a0a0;
     position: relative;
   }
   .tractum-site-footer::before {
@@ -63,22 +71,75 @@
     left: 0;
     width: 64px;
     height: 1px;
-    background: #FFB000;
+    background: #ffb000;
   }
-  .tsf-inner { max-width: 1200px; margin: 0; margin-right: auto; display: flex; flex-direction: column; gap: 6px; }
-  .tsf-row { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; line-height: 1.5; }
-  .tsf-brand { gap: 12px; margin-bottom: 4px; }
-  .tsf-mark { flex-shrink: 0; display: block; }
-  .tsf-wordmark { color: #FFFFFF; font-weight: 500; letter-spacing: 0.14em; font-size: 11px; }
-  .tsf-dot { color: #FFB000; }
-  .tsf-product { color: #FFB000; font-weight: 400; letter-spacing: 0.06em; }
-  .tsf-links a, .tsf-meta a { color: #C0C0C0; text-decoration: none; transition: color 0.15s ease; border-bottom: 0 !important; font-size: 12px; }
-  .tsf-links a:hover, .tsf-meta a:hover { color: #FFB000; }
-  .tsf-meta { gap: 14px; }
-  .tsf-meta span { color: #707070; font-size: 11px; letter-spacing: 0.02em; }
-  .tsf-legal { color: #505050; font-size: 11px; letter-spacing: 0.02em; }
+  .tsf-inner {
+    max-width: 1200px;
+    margin: 0;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .tsf-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 18px;
+    line-height: 1.5;
+  }
+  .tsf-brand {
+    gap: 12px;
+    margin-bottom: 4px;
+  }
+  .tsf-mark {
+    flex-shrink: 0;
+    display: block;
+  }
+  .tsf-wordmark {
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    font-size: 11px;
+  }
+  .tsf-dot {
+    color: #ffb000;
+  }
+  .tsf-product {
+    color: #ffb000;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+  }
+  .tsf-links a,
+  .tsf-meta a {
+    color: #c0c0c0;
+    text-decoration: none;
+    transition: color 0.15s ease;
+    border-bottom: 0 !important;
+    font-size: 12px;
+  }
+  .tsf-links a:hover,
+  .tsf-meta a:hover {
+    color: #ffb000;
+  }
+  .tsf-meta {
+    gap: 14px;
+  }
+  .tsf-meta span {
+    color: #707070;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+  }
+  .tsf-legal {
+    color: #505050;
+    font-size: 11px;
+    letter-spacing: 0.02em;
+  }
   @media (max-width: 600px) {
-    .tractum-site-footer { padding: 16px; font-size: 11px; }
+    .tractum-site-footer {
+      padding: 16px;
+      font-size: 11px;
+    }
   }
 </style>
 {% endblock %}

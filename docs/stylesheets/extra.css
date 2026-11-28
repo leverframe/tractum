@@ -10,91 +10,95 @@
    ========================================================================= */
 
 :root {
-  --tractum-bg:       #0A0A0A;
-  --tractum-surface:  #0F0F0F;
-  --tractum-border:   #1F1F1F;
-  --tractum-text:     #FFFFFF;
-  --tractum-muted:    #A0A0A0;
-  --tractum-primary:  #FFB000;
-  --tractum-accent:   #FFC94D;
+  --tractum-bg: #0a0a0a;
+  --tractum-surface: #0f0f0f;
+  --tractum-border: #1f1f1f;
+  --tractum-text: #ffffff;
+  --tractum-muted: #a0a0a0;
+  --tractum-primary: #ffb000;
+  --tractum-accent: #ffc94d;
 }
 
 /* ---- Force the dark scheme to tractum ink ----------------------- */
 [data-md-color-scheme="default"],
 [data-md-color-scheme="slate"],
 [data-md-color-scheme="tractum"] {
-  --md-default-bg-color:             var(--tractum-bg);
-  --md-default-fg-color:             var(--tractum-text);
-  --md-default-fg-color--light:      var(--tractum-muted);
-  --md-default-fg-color--lighter:    var(--tractum-muted);
-  --md-default-fg-color--lightest:   var(--tractum-border);
+  --md-default-bg-color: var(--tractum-bg);
+  --md-default-fg-color: var(--tractum-text);
+  --md-default-fg-color--light: var(--tractum-muted);
+  --md-default-fg-color--lighter: var(--tractum-muted);
+  --md-default-fg-color--lightest: var(--tractum-border);
 
-  --md-primary-fg-color:             var(--tractum-surface);
-  --md-primary-fg-color--light:      var(--tractum-surface);
-  --md-primary-fg-color--dark:       var(--tractum-bg);
-  --md-primary-bg-color:             var(--tractum-surface);
-  --md-primary-bg-color--light:      var(--tractum-border);
+  --md-primary-fg-color: var(--tractum-surface);
+  --md-primary-fg-color--light: var(--tractum-surface);
+  --md-primary-fg-color--dark: var(--tractum-bg);
+  --md-primary-bg-color: var(--tractum-surface);
+  --md-primary-bg-color--light: var(--tractum-border);
 
-  --md-accent-fg-color:              var(--tractum-primary);
+  --md-accent-fg-color: var(--tractum-primary);
   --md-accent-fg-color--transparent: rgba(255, 176, 0, 0.08);
-  --md-accent-bg-color:              var(--tractum-primary);
-  --md-accent-bg-color--light:       var(--tractum-accent);
+  --md-accent-bg-color: var(--tractum-primary);
+  --md-accent-bg-color--light: var(--tractum-accent);
 
-  --md-typeset-color:                var(--tractum-text);
-  --md-typeset-a-color:              var(--tractum-primary);
-  --md-typeset-mark-color:           var(--tractum-primary);
-  --md-typeset-del-color:            var(--tractum-muted);
-  --md-typeset-ins-color:            var(--tractum-accent);
-  --md-typeset-kbd-color:            var(--tractum-surface);
-  --md-typeset-kbd-accent-color:     var(--tractum-border);
-  --md-typeset-kbd-border-color:     var(--tractum-border);
+  --md-typeset-color: var(--tractum-text);
+  --md-typeset-a-color: var(--tractum-primary);
+  --md-typeset-mark-color: var(--tractum-primary);
+  --md-typeset-del-color: var(--tractum-muted);
+  --md-typeset-ins-color: var(--tractum-accent);
+  --md-typeset-kbd-color: var(--tractum-surface);
+  --md-typeset-kbd-accent-color: var(--tractum-border);
+  --md-typeset-kbd-border-color: var(--tractum-border);
 
-  --md-code-bg-color:                var(--tractum-surface);
-  --md-code-fg-color:                var(--tractum-text);
-  --md-code-hl-color:                rgba(255, 176, 0, 0.10);
-  --md-code-hl-name-color:           var(--tractum-text);
-  --md-code-hl-operator-color:       var(--tractum-muted);
-  --md-code-hl-punctuation-color:    var(--tractum-muted);
-  --md-code-hl-comment-color:        var(--tractum-muted);
-  --md-code-hl-generic-color:        var(--tractum-muted);
-  --md-code-hl-variable-color:       var(--tractum-text);
-  --md-code-hl-string-color:         var(--tractum-accent);
-  --md-code-hl-number-color:         var(--tractum-accent);
-  --md-code-hl-keyword-color:        var(--tractum-primary);
-  --md-code-hl-function-color:       var(--tractum-text);
-  --md-code-hl-constant-color:       var(--tractum-accent);
-  --md-code-hl-name-color:           var(--tractum-text);
+  --md-code-bg-color: var(--tractum-surface);
+  --md-code-fg-color: var(--tractum-text);
+  --md-code-hl-color: rgba(255, 176, 0, 0.1);
+  --md-code-hl-name-color: var(--tractum-text);
+  --md-code-hl-operator-color: var(--tractum-muted);
+  --md-code-hl-punctuation-color: var(--tractum-muted);
+  --md-code-hl-comment-color: var(--tractum-muted);
+  --md-code-hl-generic-color: var(--tractum-muted);
+  --md-code-hl-variable-color: var(--tractum-text);
+  --md-code-hl-string-color: var(--tractum-accent);
+  --md-code-hl-number-color: var(--tractum-accent);
+  --md-code-hl-keyword-color: var(--tractum-primary);
+  --md-code-hl-function-color: var(--tractum-text);
+  --md-code-hl-constant-color: var(--tractum-accent);
+  --md-code-hl-name-color: var(--tractum-text);
 
-  --md-header-fg-color:              var(--tractum-text);
-  --md-header-bg-color:             var(--tractum-surface);
-  --md-header-shadow:                0 -1px 0 var(--tractum-border) inset;
+  --md-header-fg-color: var(--tractum-text);
+  --md-header-bg-color: var(--tractum-surface);
+  --md-header-shadow: 0 -1px 0 var(--tractum-border) inset;
 
-  --md-nav-fg-color:                 var(--tractum-muted);
-  --md-nav-bg-color:                 var(--tractum-bg);
-  --md-nav-active-fg-color:          var(--tractum-primary);
-  --md-nav-icon-color:               var(--tractum-muted);
+  --md-nav-fg-color: var(--tractum-muted);
+  --md-nav-bg-color: var(--tractum-bg);
+  --md-nav-active-fg-color: var(--tractum-primary);
+  --md-nav-icon-color: var(--tractum-muted);
 
-  --md-search-bg-color:              var(--tractum-bg);
-  --md-search-fg-color:              var(--tractum-text);
-  --md-search-suggestion-color:      var(--tractum-muted);
+  --md-search-bg-color: var(--tractum-bg);
+  --md-search-fg-color: var(--tractum-text);
+  --md-search-suggestion-color: var(--tractum-muted);
   --md-search-suggestion-result-color: var(--tractum-text);
-  --md-search-suggestion-icon-color:   var(--tractum-muted);
-  --md-search-suggestion-meta-color:   var(--tractum-muted);
-  --md-search-result-color:          var(--tractum-text);
+  --md-search-suggestion-icon-color: var(--tractum-muted);
+  --md-search-suggestion-meta-color: var(--tractum-muted);
+  --md-search-result-color: var(--tractum-text);
 
-  --md-footer-fg-color:              var(--tractum-muted);
-  --md-footer-bg-color:              var(--tractum-surface);
-  --md-footer-fg-color--lighter:     var(--tractum-text);
+  --md-footer-fg-color: var(--tractum-muted);
+  --md-footer-bg-color: var(--tractum-surface);
+  --md-footer-fg-color--lighter: var(--tractum-text);
 
-  --md-shadow-z1:                    none;
-  --md-shadow-z2:                    none;
-  --md-shadow-z3:                    none;
+  --md-shadow-z1: none;
+  --md-shadow-z2: none;
+  --md-shadow-z3: none;
 }
 
 /* ---- Body typography --------------------------------------------------- */
 body,
 .md-typeset {
-  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  font-family:
+    "Space Grotesk",
+    system-ui,
+    -apple-system,
+    sans-serif;
   font-feature-settings: "ss01", "cv11";
   background-color: var(--tractum-bg);
   color: var(--tractum-text);
@@ -114,7 +118,7 @@ body,
 .md-typeset h4,
 .md-typeset h5,
 .md-typeset h6 {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-weight: 600;
   letter-spacing: -0.015em;
   color: var(--tractum-text);
@@ -155,7 +159,9 @@ body,
   color: var(--tractum-primary);
   text-decoration: none;
   border-bottom: 1px solid transparent;
-  transition: color 120ms ease, border-color 120ms ease;
+  transition:
+    color 120ms ease,
+    border-color 120ms ease;
 }
 .md-typeset a:hover,
 .md-typeset a:focus {
@@ -171,7 +177,7 @@ body,
 .md-typeset code,
 .md-typeset kbd,
 .md-typeset samp {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 0.82em;
   background: var(--tractum-surface);
   border: 1px solid var(--tractum-border);
@@ -183,7 +189,7 @@ body,
 /* ---- Code blocks ------------------------------------------------------ */
 .md-typeset pre > code,
 .md-typeset .highlight {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-family: "JetBrains Mono", ui-monospace, monospace;
   font-size: 0.82rem;
   line-height: 1.6;
   background: var(--tractum-surface);
@@ -211,7 +217,9 @@ body,
   padding: 4px;
   top: 0.65rem;
   right: 0.65rem;
-  transition: color 120ms ease, border-color 120ms ease;
+  transition:
+    color 120ms ease,
+    border-color 120ms ease;
 }
 .md-typeset .highlight .md-clipboard:hover,
 .md-typeset .highlight .md-clipboard:focus {
@@ -227,7 +235,7 @@ body,
   color: var(--tractum-text);
 }
 .md-header__title {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -260,11 +268,11 @@ body,
   margin-top: 1.5rem;
 }
 .md-nav {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   font-size: 0.85rem;
 }
 .md-nav__title {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -279,7 +287,9 @@ body,
   padding: 0.35rem 0.75rem;
   border-radius: 4px;
   margin: 1px 0;
-  transition: color 100ms ease, background 100ms ease;
+  transition:
+    color 100ms ease,
+    background 100ms ease;
 }
 .md-nav__link:hover,
 .md-nav__link:focus {
@@ -307,10 +317,10 @@ body,
   font-size: 0.85rem;
 }
 .md-typeset table:not([class]) th {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.1em;
   color: var(--tractum-muted);
   background: var(--tractum-surface);
   border-bottom: 1px solid var(--tractum-border);
@@ -355,7 +365,7 @@ body,
 }
 .md-typeset .admonition-title,
 .md-typeset summary {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -372,16 +382,16 @@ body,
   color: var(--tractum-accent);
 }
 .md-typeset .admonition-warning {
-  border-left-color: #FFB74D;
+  border-left-color: #ffb74d;
 }
 .md-typeset .admonition-warning .admonition-title {
-  color: #FFB74D;
+  color: #ffb74d;
 }
 .md-typeset .admonition-danger {
-  border-left-color: #FF5252;
+  border-left-color: #ff5252;
 }
 .md-typeset .admonition-danger .admonition-title {
-  color: #FF5252;
+  color: #ff5252;
 }
 
 /* ---- Search overlay --------------------------------------------------- */
@@ -398,7 +408,7 @@ body,
   background: var(--tractum-bg);
   border: 1px solid var(--tractum-border);
   border-radius: 8px;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: "Space Grotesk", sans-serif;
   color: var(--tractum-text);
 }
 .md-search__input::placeholder {
@@ -429,10 +439,10 @@ body,
 /* ---- Edit-this-page / last-updated links ------------------------------ */
 .md-content__button {
   color: var(--tractum-muted);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.1em;
 }
 .md-content__button:hover,
 .md-content__button:focus {
@@ -447,10 +457,10 @@ body,
   box-shadow: none;
 }
 .md-typeset .tabbed-labels > label {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.10em;
+  letter-spacing: 0.1em;
   color: var(--tractum-muted);
   border-bottom: 2px solid transparent;
 }
@@ -498,7 +508,7 @@ body,
 /* ---- Custom utility classes (used in markdown via {: .class }) -------- */
 .md-typeset .pill {
   display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.7rem;
   border: 1px solid var(--tractum-border);
   border-radius: 9999px;
@@ -508,7 +518,7 @@ body,
 }
 .md-typeset .pill.amber {
   color: var(--tractum-primary);
-  border-color: rgba(255, 176, 0, 0.30);
+  border-color: rgba(255, 176, 0, 0.3);
 }
 
 /* Receipt chip — live consensus chip used on the home page */
@@ -521,7 +531,7 @@ body,
   border-radius: 8px;
   padding: 0.75rem 1rem;
   margin: 1rem 0;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.78rem;
   color: var(--tractum-muted);
 }
@@ -556,7 +566,7 @@ body,
   border-bottom: 1px solid var(--tractum-border);
 }
 .md-typeset .docs-hero .docs-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.14em;
@@ -592,7 +602,7 @@ body,
   background: var(--tractum-bg);
   border-bottom: 1px solid var(--tractum-border);
   color: var(--tractum-muted);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.72rem;
   letter-spacing: 0.02em;
 }

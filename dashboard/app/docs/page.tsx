@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 
 export default function DocsPage() {
   return (
@@ -24,7 +24,8 @@ export default function DocsPage() {
                 Getting Started
               </h2>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Tractum is a Claude-native agent infrastructure platform built on top of Claude-Flow orchestration.
+                Tractum is a Claude-native agent infrastructure platform built
+                on top of Claude-Flow orchestration.
               </p>
               <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 space-y-2">
                 <li>Deploy and manage Claude agents</li>
@@ -53,15 +54,35 @@ export default function DocsPage() {
                 API Endpoints
               </h2>
               <ul className="space-y-2 text-gray-600 dark:text-gray-400">
-                <li><code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">GET /health</code> - Health check</li>
-                <li><code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">GET /api/v1/agents</code> - List agents</li>
-                <li><code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">POST /api/v1/agents</code> - Create agent</li>
-                <li><code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">GET /api/v1/tenants</code> - List tenants</li>
+                <li>
+                  <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    GET /health
+                  </code>{" "}
+                  - Health check
+                </li>
+                <li>
+                  <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    GET /api/v1/agents
+                  </code>{" "}
+                  - List agents
+                </li>
+                <li>
+                  <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    POST /api/v1/agents
+                  </code>{" "}
+                  - Create agent
+                </li>
+                <li>
+                  <code className="bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">
+                    GET /api/v1/tenants
+                  </code>{" "}
+                  - List tenants
+                </li>
               </ul>
             </section>
           </div>
         </div>
       </div>
     </main>
-  )
+  );
 }

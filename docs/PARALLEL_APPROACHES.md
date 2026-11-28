@@ -6,14 +6,14 @@ Claude has **two different ways** to run parallel agents. They serve different p
 
 ## Quick Comparison
 
-| Aspect | Native Parallel (SDK) | Tractum Tool |
-|--------|----------------------|----------------|
+| Aspect          | Native Parallel (SDK)           | Tractum Tool                    |
+| --------------- | ------------------------------- | ------------------------------- |
 | **Persistence** | Temporary (dies after response) | Persistent (runs until stopped) |
-| **Reusability** | One-shot | Reusable across tasks |
-| **Management** | Automatic | Manual (start/stop/monitor) |
-| **Memory** | Conversation-scoped | Swarm-scoped |
-| **Use Case** | Quick parallel tasks | Dedicated specialist teams |
-| **Overhead** | Low | Higher |
+| **Reusability** | One-shot                        | Reusable across tasks           |
+| **Management**  | Automatic                       | Manual (start/stop/monitor)     |
+| **Memory**      | Conversation-scoped             | Swarm-scoped                    |
+| **Use Case**    | Quick parallel tasks            | Dedicated specialist teams      |
+| **Overhead**    | Low                             | Higher                          |
 
 ## When to Use Which
 
@@ -48,6 +48,7 @@ tractum(
 ## Example Scenarios
 
 ### Scenario 1: Quick Document Analysis
+
 **Wrong:** Deploy a swarm just to analyze 3 documents once
 **Right:** Use native parallel processing
 
@@ -56,6 +57,7 @@ Claude: "I'll analyze these 3 documents in parallel using my native capability"
 ```
 
 ### Scenario 2: Research Team
+
 **Wrong:** Spin up new agents for each research query
 **Right:** Deploy a persistent research swarm
 

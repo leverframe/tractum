@@ -20,13 +20,13 @@ Complete guide for deploying and running the Tractum agent platform.
 
 ### Required Software
 
-| Software | Version | Purpose |
-|----------|---------|---------|
-| **Python** | 3.11+ | Backend API |
-| **Node.js** | 18+ | Frontend dashboard |
-| **pnpm/npm** | 9.0+ / 8.0+ | Package manager |
-| **Docker** | Latest | Infrastructure services |
-| **Git** | Latest | Version control |
+| Software     | Version     | Purpose                 |
+| ------------ | ----------- | ----------------------- |
+| **Python**   | 3.11+       | Backend API             |
+| **Node.js**  | 18+         | Frontend dashboard      |
+| **pnpm/npm** | 9.0+ / 8.0+ | Package manager         |
+| **Docker**   | Latest      | Infrastructure services |
+| **Git**      | Latest      | Version control         |
 
 ### Verify Installation
 
@@ -78,12 +78,12 @@ cd dashboard && npm run dev
 
 ### Access URLs
 
-| Service | URL | Description |
-|---------|-----|-------------|
-| **Dashboard** | http://localhost:3000 | Main web UI |
-| **API Docs** | http://localhost:8000/docs | Interactive API docs |
-| **API** | http://localhost:8000 | REST API endpoint |
-| **Adminer** | http://localhost:8090 | Database admin (optional) |
+| Service       | URL                        | Description               |
+| ------------- | -------------------------- | ------------------------- |
+| **Dashboard** | http://localhost:3000      | Main web UI               |
+| **API Docs**  | http://localhost:8000/docs | Interactive API docs      |
+| **API**       | http://localhost:8000      | REST API endpoint         |
+| **Adminer**   | http://localhost:8090      | Database admin (optional) |
 
 ---
 
@@ -142,27 +142,27 @@ cp .env.example .env
 
 #### Key Configuration Options
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `CLAUDWAY_API_HOST` | 0.0.0.0 | API bind address |
-| `CLAUDWAY_API_PORT` | 8000 | API port |
-| `CLAUDWAY_DATABASE_URL` | postgresql://... | PostgreSQL connection |
-| `CLAUDWAY_REDIS_URL` | redis://... | Redis connection |
-| `CLAUDWAY_CLAUDE_FLOW_URL` | http://localhost:8080 | Claude-Flow API |
-| `CLAUDWAY_STRIPE_API_KEY` | - | Stripe for payments (optional) |
-| `CLAUDWAY_ANTHROPIC_API_KEY` | - | Anthropic API key |
+| Variable                     | Default               | Description                    |
+| ---------------------------- | --------------------- | ------------------------------ |
+| `CLAUDWAY_API_HOST`          | 0.0.0.0               | API bind address               |
+| `CLAUDWAY_API_PORT`          | 8000                  | API port                       |
+| `CLAUDWAY_DATABASE_URL`      | postgresql://...      | PostgreSQL connection          |
+| `CLAUDWAY_REDIS_URL`         | redis://...           | Redis connection               |
+| `CLAUDWAY_CLAUDE_FLOW_URL`   | http://localhost:8080 | Claude-Flow API                |
+| `CLAUDWAY_STRIPE_API_KEY`    | -                     | Stripe for payments (optional) |
+| `CLAUDWAY_ANTHROPIC_API_KEY` | -                     | Anthropic API key              |
 
 ### Docker Services
 
 The `infra/docker-compose.yml` includes:
 
-| Service | Port | Description |
-|---------|------|-------------|
-| **postgres** | 5432 | PostgreSQL database |
-| **redis** | 6379 | Cache & rate limiting |
-| **nats** | 4222, 8222 | Message bus |
-| **claude-flow** | 8080, 9090 | Orchestration layer |
-| **adminer** | 8090 | DB admin UI (optional) |
+| Service         | Port       | Description            |
+| --------------- | ---------- | ---------------------- |
+| **postgres**    | 5432       | PostgreSQL database    |
+| **redis**       | 6379       | Cache & rate limiting  |
+| **nats**        | 4222, 8222 | Message bus            |
+| **claude-flow** | 8080, 9090 | Orchestration layer    |
+| **adminer**     | 8090       | DB admin UI (optional) |
 
 ---
 
@@ -324,6 +324,7 @@ Visit http://localhost:8000/docs for Swagger UI with try-it-out functionality.
 **Problem**: Port already in use
 
 **Solution**:
+
 ```bash
 # Find process using port
 netstat -ano | findstr :8000
@@ -337,6 +338,7 @@ taskkill /PID <pid> /F
 **Problem**: `ModuleNotFoundError: No module named 'tractum'`
 
 **Solution**:
+
 ```bash
 pip install -e .
 ```
@@ -344,6 +346,7 @@ pip install -e .
 **Problem**: PostgreSQL connection refused
 
 **Solution**:
+
 ```bash
 # Check Docker container
 docker ps | grep postgres
@@ -357,6 +360,7 @@ docker restart tractum-postgres
 **Problem**: `npm ERR! peer dep missing`
 
 **Solution**:
+
 ```bash
 npm install --legacy-peer-deps
 ```
@@ -364,6 +368,7 @@ npm install --legacy-peer-deps
 **Problem**: Cannot connect to API
 
 **Solution**: Check that:
+
 1. API is running (`curl http://localhost:8000/health`)
 2. `.env.local` has correct `NEXT_PUBLIC_API_URL`
 3. No firewall blocking the connection
@@ -373,6 +378,7 @@ npm install --legacy-peer-deps
 **Problem**: Tables don't exist
 
 **Solution**:
+
 ```bash
 # The API auto-creates tables on startup
 # Restart the API server
@@ -381,6 +387,7 @@ npm install --legacy-peer-deps
 **Problem**: Need to reset database
 
 **Solution**:
+
 ```bash
 # Stop containers
 docker-compose -f infra/docker-compose.yml down

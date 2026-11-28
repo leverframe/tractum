@@ -1,15 +1,15 @@
-import { create } from "zustand"
-import type { Tenant } from "./api-client"
+import { create } from "zustand";
+import type { Tenant } from "./api-client";
 
 interface AppState {
-  sidebarOpen: boolean
-  setSidebarOpen: (open: boolean) => void
-  deployAgentOpen: boolean
-  setDeployAgentOpen: (open: boolean) => void
-  createTenantOpen: boolean
-  setCreateTenantOpen: (open: boolean) => void
-  currentTenant: Tenant | null
-  setCurrentTenant: (tenant: Tenant | null) => void
+  sidebarOpen: boolean;
+  setSidebarOpen: (open: boolean) => void;
+  deployAgentOpen: boolean;
+  setDeployAgentOpen: (open: boolean) => void;
+  createTenantOpen: boolean;
+  setCreateTenantOpen: (open: boolean) => void;
+  currentTenant: Tenant | null;
+  setCurrentTenant: (tenant: Tenant | null) => void;
 }
 
 export const useAppStore = create<AppState>((set) => ({
@@ -21,4 +21,4 @@ export const useAppStore = create<AppState>((set) => ({
   setCreateTenantOpen: (open) => set({ createTenantOpen: open }),
   currentTenant: null,
   setCurrentTenant: (tenant) => set({ currentTenant: tenant }),
-}))
+}));

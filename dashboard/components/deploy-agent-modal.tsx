@@ -1,36 +1,42 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { apiClient } from "@/lib/api-client"
-import { useAppStore } from "@/lib/store"
-import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import { X, Plus, Trash2 } from "lucide-react"
+import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { apiClient } from "@/lib/api-client";
+import { useAppStore } from "@/lib/store";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { X, Plus, Trash2 } from "lucide-react";
 
 interface AgentConfig {
-  name: string
-  role: string
-  instructions: string
+  name: string;
+  role: string;
+  instructions: string;
 }
 
 // Predefined agent templates
-const AGENT_TEMPLATES: Record<string, { name: string; role: string; instructions: string }[]> = {
+const AGENT_TEMPLATES: Record<
+  string,
+  { name: string; role: string; instructions: string }[]
+> = {
   "research-swarm": [
     {
       name: "Researcher",
       role: "Lead Research Analyst",
-      instructions: "You analyze problems thoroughly and provide detailed insights.",
+      instructions:
+        "You analyze problems thoroughly and provide detailed insights.",
     },
     {
       name: "Critic",
       role: "Critical Reviewer",
-      instructions: "You evaluate ideas for strengths, weaknesses, and potential risks.",
+      instructions:
+        "You evaluate ideas for strengths, weaknesses, and potential risks.",
     },
     {
       name: "Synthesizer",
       role: "Synthesis Expert",
-      instructions: "You combine multiple perspectives into a coherent final recommendation.",
+      instructions:
+        "You combine multiple perspectives into a coherent final recommendation.",
     },
   ],
   "task-coordinator": [
@@ -47,65 +53,76 @@ const AGENT_TEMPLATES: Record<string, { name: string; role: string; instructions
     {
       name: "Writer",
       role: "Technical Writer",
-      instructions: "You synthesize information into clear, structured documentation.",
+      instructions:
+        "You synthesize information into clear, structured documentation.",
     },
   ],
-}
+};
 
 export function DeployAgentModal() {
-  const queryClient = useQueryClient()
-  const { deployAgentOpen, setDeployAgentOpen } = useAppStore()
+  const queryClient = useQueryClient();
+  const { deployAgentOpen, setDeployAgentOpen } = useAppStore();
 
-  const [name, setName] = useState("")
-  const [description, setDescription] = useState("")
-  const [templateId, setTemplateId] = useState("research-swarm")
-  const [agents, setAgents] = useState<AgentConfig[]>(AGENT_TEMPLATES["research-swarm"])
-  const [showCustomAgent, setShowCustomAgent] = useState(false)
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [templateId, setTemplateId] = useState("research-swarm");
+  const [agents, setAgents] = useState<AgentConfig[]>(
+    AGENT_TEMPLATES["research-swarm"],
+  );
+  const [showCustomAgent, setShowCustomAgent] = useState(false);
 
   const deployMutation = useMutation({
-    mutationFn: (data: { name: string; description: string; agents: AgentConfig[] }) =>
+    mutationFn: (data: {
+      name: string;
+      description: string;
+      agents: AgentConfig[];
+    }) =>
       apiClient.deployAgent({
         name: data.name,
         description: data.description,
         agents: data.agents,
       }),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["agents"] })
-      setDeployAgentOpen(false)
-      setName("")
-      setDescription("")
-      setAgents([])
-      setTemplateId("research-swarm")
+      queryClient.invalidateQueries({ queryKey: ["agents"] });
+      setDeployAgentOpen(false);
+      setName("");
+      setDescription("");
+      setAgents([]);
+      setTemplateId("research-swarm");
     },
-  })
+  });
 
   // Load template agents when template changes
   const handleTemplateChange = (template: string) => {
-    setTemplateId(template)
+    setTemplateId(template);
     if (AGENT_TEMPLATES[template]) {
-      setAgents([...AGENT_TEMPLATES[template]])
+      setAgents([...AGENT_TEMPLATES[template]]);
     }
-  }
+  };
 
   // Add custom agent
   const addAgent = () => {
-    setAgents([...agents, { name: "", role: "", instructions: "" }])
-    setShowCustomAgent(true)
-  }
+    setAgents([...agents, { name: "", role: "", instructions: "" }]);
+    setShowCustomAgent(true);
+  };
 
   // Remove agent
   const removeAgent = (index: number) => {
-    setAgents(agents.filter((_, i) => i !== index))
-  }
+    setAgents(agents.filter((_, i) => i !== index));
+  };
 
   // Update agent
-  const updateAgent = (index: number, field: keyof AgentConfig, value: string) => {
-    const newAgents = [...agents]
-    newAgents[index][field] = value
-    setAgents(newAgents)
-  }
+  const updateAgent = (
+    index: number,
+    field: keyof AgentConfig,
+    value: string,
+  ) => {
+    const newAgents = [...agents];
+    newAgents[index][field] = value;
+    setAgents(newAgents);
+  };
 
-  if (!deployAgentOpen) return null
+  if (!deployAgentOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
@@ -117,15 +134,17 @@ export function DeployAgentModal() {
           <X className="w-5 h-5" />
         </button>
 
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Deploy Agent Swarm</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          Deploy Agent Swarm
+        </h2>
 
         <form
           onSubmit={(e) => {
-            e.preventDefault()
+            e.preventDefault();
             if (agents.length === 0) {
-              return
+              return;
             }
-            deployMutation.mutate({ name, description, agents })
+            deployMutation.mutate({ name, description, agents });
           }}
           className="space-y-4"
         >
@@ -166,7 +185,9 @@ export function DeployAgentModal() {
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="research-swarm">Research Swarm (3 agents)</option>
-              <option value="task-coordinator">Task Coordinator (3 specialists)</option>
+              <option value="task-coordinator">
+                Task Coordinator (3 specialists)
+              </option>
             </select>
           </div>
 
@@ -187,7 +208,10 @@ export function DeployAgentModal() {
 
             <div className="space-y-3">
               {agents.map((agent, index) => (
-                <div key={index} className="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-800">
+                <div
+                  key={index}
+                  className="p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-800"
+                >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                       Agent #{index + 1}
@@ -205,7 +229,9 @@ export function DeployAgentModal() {
                     <input
                       type="text"
                       value={agent.name}
-                      onChange={(e) => updateAgent(index, "name", e.target.value)}
+                      onChange={(e) =>
+                        updateAgent(index, "name", e.target.value)
+                      }
                       placeholder="Agent name"
                       className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                       required
@@ -213,14 +239,18 @@ export function DeployAgentModal() {
                     <input
                       type="text"
                       value={agent.role}
-                      onChange={(e) => updateAgent(index, "role", e.target.value)}
+                      onChange={(e) =>
+                        updateAgent(index, "role", e.target.value)
+                      }
                       placeholder="Agent role"
                       className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                       required
                     />
                     <textarea
                       value={agent.instructions}
-                      onChange={(e) => updateAgent(index, "instructions", e.target.value)}
+                      onChange={(e) =>
+                        updateAgent(index, "instructions", e.target.value)
+                      }
                       placeholder="Agent instructions"
                       className="w-full px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                       rows={2}
@@ -240,7 +270,8 @@ export function DeployAgentModal() {
 
           {deployMutation.error && (
             <div className="p-3 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 rounded-lg text-sm">
-              {(deployMutation.error as Error).message || "Failed to deploy agent swarm"}
+              {(deployMutation.error as Error).message ||
+                "Failed to deploy agent swarm"}
             </div>
           )}
 
@@ -265,5 +296,5 @@ export function DeployAgentModal() {
         </form>
       </Card>
     </div>
-  )
+  );
 }

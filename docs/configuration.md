@@ -23,15 +23,15 @@ AgentConfig(
 )
 ```
 
-| Field | Type | Default | Notes |
-|---|---|---|---|
-| `name` | `str` | (required) | Display name; lands on the receipt under each agent's response. |
-| `role` | `str` | (required) | One-line role description; injected into the system prompt. |
-| `instructions` | `str` | (required) | Free-form system-prompt body. |
-| `model` | `str` | `"claude-sonnet-5"` | Any Anthropic model id. |
-| `temperature` | `float` | `0.7` | Sampling temperature. |
-| `max_tokens` | `int` | `4096` | Per-call completion cap. Tight values truncate the structured `<answer>` block; the parser tolerates open-but-unclosed tags. |
-| `tools` | `list[Any]` | `[]` | `Tool` instances. Passed to the API only if non-empty (real API rejects `tools=None`). |
+| Field          | Type        | Default             | Notes                                                                                                                        |
+| -------------- | ----------- | ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `name`         | `str`       | (required)          | Display name; lands on the receipt under each agent's response.                                                              |
+| `role`         | `str`       | (required)          | One-line role description; injected into the system prompt.                                                                  |
+| `instructions` | `str`       | (required)          | Free-form system-prompt body.                                                                                                |
+| `model`        | `str`       | `"claude-sonnet-5"` | Any Anthropic model id.                                                                                                      |
+| `temperature`  | `float`     | `0.7`               | Sampling temperature.                                                                                                        |
+| `max_tokens`   | `int`       | `4096`              | Per-call completion cap. Tight values truncate the structured `<answer>` block; the parser tolerates open-but-unclosed tags. |
+| `tools`        | `list[Any]` | `[]`                | `Tool` instances. Passed to the API only if non-empty (real API rejects `tools=None`).                                       |
 
 **Cheap-path example** (Haiku for cost-sensitive runs):
 
@@ -66,24 +66,24 @@ swarm = Swarm(SwarmConfig(
 ), api_key=...)
 ```
 
-| Field | Type | Default | Notes |
-|---|---|---|---|
-| `name` | `str` | (required) | Stamped on every receipt — `swarm_name` is inside the signed payload. |
-| `description` | `str` | (required) | Human description. |
-| `agents` | `list[AgentConfig]` | `[]` | Member agents. Run concurrently via `asyncio.gather`, not serially. |
-| `topology` | `str` | `"hierarchical_mesh"` | Advisory hint. **Currently not enforced** — all agents run peer-to-peer. |
-| `consensus_method` | `str` | `"weighted_vote"` | Back-compat hint resolved to a strategy **only if** you don't pass `consensus=` to `Swarm()`. Values: `"weighted_vote"` (default/unknown), `"debate"` or `"revise"` → `Debate`. |
-| `max_task_tokens` | `int` | `100_000` | Declared but **not enforced** in the current code path. |
+| Field              | Type                | Default               | Notes                                                                                                                                                                           |
+| ------------------ | ------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `name`             | `str`               | (required)            | Stamped on every receipt — `swarm_name` is inside the signed payload.                                                                                                           |
+| `description`      | `str`               | (required)            | Human description.                                                                                                                                                              |
+| `agents`           | `list[AgentConfig]` | `[]`                  | Member agents. Run concurrently via `asyncio.gather`, not serially.                                                                                                             |
+| `topology`         | `str`               | `"hierarchical_mesh"` | Advisory hint. **Currently not enforced** — all agents run peer-to-peer.                                                                                                        |
+| `consensus_method` | `str`               | `"weighted_vote"`     | Back-compat hint resolved to a strategy **only if** you don't pass `consensus=` to `Swarm()`. Values: `"weighted_vote"` (default/unknown), `"debate"` or `"revise"` → `Debate`. |
+| `max_task_tokens`  | `int`               | `100_000`             | Declared but **not enforced** in the current code path.                                                                                                                         |
 
 ### `Swarm.__init__` keyword arguments
 
 The constructor takes these on top of the config:
 
-| Param | Default | Notes |
-|---|---|---|
-| `api_key` | `None` | Anthropic key. `None` falls through to the `anthropic` SDK's env lookup of `ANTHROPIC_API_KEY`. |
-| `consensus` | `None` | `ConsensusStrategy` instance. **Overrides** `SwarmConfig.consensus_method` if both are set — pick one. |
-| `on_event` | `None` | Async callback fired on `AgentCompleted` / `ConsensusResolved`. Errors swallowed (intentional — buggy observer shouldn't crash consensus). |
+| Param       | Default | Notes                                                                                                                                      |
+| ----------- | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| `api_key`   | `None`  | Anthropic key. `None` falls through to the `anthropic` SDK's env lookup of `ANTHROPIC_API_KEY`.                                            |
+| `consensus` | `None`  | `ConsensusStrategy` instance. **Overrides** `SwarmConfig.consensus_method` if both are set — pick one.                                     |
+| `on_event`  | `None`  | Async callback fired on `AgentCompleted` / `ConsensusResolved`. Errors swallowed (intentional — buggy observer shouldn't crash consensus). |
 
 ---
 
@@ -111,9 +111,9 @@ from tractum import Debate
 swarm = Swarm(config, consensus=Debate(agreement_threshold=0.8))
 ```
 
-| Param | Default | Notes |
-|---|---|---|
-| `agreement_threshold` | `0.8` | Skip the revision round if round-1 agreement ≥ threshold. Lower = more conservative (more debates); higher = fewer revision rounds. |
+| Param                 | Default | Notes                                                                                                                               |
+| --------------------- | ------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `agreement_threshold` | `0.8`   | Skip the revision round if round-1 agreement ≥ threshold. Lower = more conservative (more debates); higher = fewer revision rounds. |
 
 **Known limit:** the agreement scorer (`_agreement_score` → `_normalize_answer`) is **surface-form only** — lowercase, collapse whitespace, strip trailing punctuation. Three semantically equivalent but differently worded answers will score ~0.33 and trigger a debate round. Tracked as TODO semantic-agreement.
 
@@ -128,14 +128,14 @@ from tractum import Coordinator, CoordinatorConfig
 coord = Coordinator(CoordinatorConfig())
 ```
 
-| Param | Default |
-|---|---|
-| `name` | `"Coordinator"` |
-| `role` | `"Task Coordinator and Manager"` |
+| Param          | Default                                  |
+| -------------- | ---------------------------------------- |
+| `name`         | `"Coordinator"`                          |
+| `role`         | `"Task Coordinator and Manager"`         |
 | `instructions` | Built-in decomposition prompt (~4 lines) |
-| `model` | `"claude-sonnet-5"` |
-| `temperature` | `0.7` |
-| `max_tokens` | `4096` |
+| `model`        | `"claude-sonnet-5"`                      |
+| `temperature`  | `0.7`                                    |
+| `max_tokens`   | `4096`                                   |
 
 Override any of these by passing kwargs:
 
@@ -161,15 +161,15 @@ receipt = ConsensusReceipt.from_result(result, swarm_name="ArchReview", task_id=
 Ed25519Backend().sign_receipt(receipt, private_key)
 ```
 
-| Field | Type | Default | Notes |
-|---|---|---|---|
-| `payload` | `dict` | (required) | Canonical consensus facts. Hashed for the signature. |
-| `algorithm` | `str` | `""` | Set by the backend on signing (`"ed25519"`, `"mldsa65"`). |
-| `public_key` | `str` | `""` | Hex verification key. |
-| `signature` | `str` | `""` | Hex signature over `sha256(canonical_json(payload))`. |
-| `payload_hash` | `str` | `""` | Hex sha256 of canonical payload. |
-| `signed_at` | `str` | `""` | ISO 8601 UTC timestamp. |
-| `metadata` | `dict` | `{}` | Free-form transport hints. **Not signed.** |
+| Field          | Type   | Default    | Notes                                                     |
+| -------------- | ------ | ---------- | --------------------------------------------------------- |
+| `payload`      | `dict` | (required) | Canonical consensus facts. Hashed for the signature.      |
+| `algorithm`    | `str`  | `""`       | Set by the backend on signing (`"ed25519"`, `"mldsa65"`). |
+| `public_key`   | `str`  | `""`       | Hex verification key.                                     |
+| `signature`    | `str`  | `""`       | Hex signature over `sha256(canonical_json(payload))`.     |
+| `payload_hash` | `str`  | `""`       | Hex sha256 of canonical payload.                          |
+| `signed_at`    | `str`  | `""`       | ISO 8601 UTC timestamp.                                   |
+| `metadata`     | `dict` | `{}`       | Free-form transport hints. **Not signed.**                |
 
 The `is_signed` property returns `True` iff `signature`, `public_key`, and `algorithm` are all truthy.
 
@@ -226,11 +226,11 @@ tractum-mcp --http --port 9000     # custom port
 tractum-mcp --http --host 0.0.0.0  # bind all interfaces
 ```
 
-| Flag | Default | Notes |
-|---|---|---|
-| `--http` | off | Serve over HTTP/SSE (streamable-http transport) instead of stdio. |
-| `--host` | `127.0.0.1` | HTTP bind host. |
-| `--port` | `8765` | HTTP bind port. |
+| Flag     | Default     | Notes                                                             |
+| -------- | ----------- | ----------------------------------------------------------------- |
+| `--http` | off         | Serve over HTTP/SSE (streamable-http transport) instead of stdio. |
+| `--host` | `127.0.0.1` | HTTP bind host.                                                   |
+| `--port` | `8765`      | HTTP bind port.                                                   |
 
 No auth flag. No TLS flag. No log-level flag. For remote deployments, put it behind an authenticated reverse proxy.
 
@@ -240,10 +240,10 @@ No auth flag. No TLS flag. No log-level flag. For remote deployments, put it beh
 
 Only two are read anywhere in `tractum/`:
 
-| Var | Used by | Purpose |
-|---|---|---|
-| `ANTHROPIC_API_KEY` | `server.py` (MCP server) | Passed to `Swarm(api_key=...)`. |
-| `TRACTUM_SIGNING_KEY` | `server.py` | Hex Ed25519 private key. If set, MCP signs every receipt; if unset, receipts ship unsigned. |
+| Var                   | Used by                  | Purpose                                                                                     |
+| --------------------- | ------------------------ | ------------------------------------------------------------------------------------------- |
+| `ANTHROPIC_API_KEY`   | `server.py` (MCP server) | Passed to `Swarm(api_key=...)`.                                                             |
+| `TRACTUM_SIGNING_KEY` | `server.py`              | Hex Ed25519 private key. If set, MCP signs every receipt; if unset, receipts ship unsigned. |
 
 **Important:** `Swarm()` and `Agent()` do **not** read env vars themselves. `api_key=None` falls through to the `anthropic` SDK's own env lookup. For non-server use, pass the key explicitly.
 
@@ -253,19 +253,19 @@ Only two are read anywhere in `tractum/`:
 
 Base install pulls: `anthropic>=0.40.0`, `cryptography>=42.0.0`, `httpx>=0.26.0`, `pydantic>=2.5.0`. Python `>=3.11`. License MIT.
 
-| Extra | Pulls | Use when |
-|---|---|---|
-| `mcp` | `mcp>=2.0.0` | Running `tractum-mcp`. |
-| `nostr` | `coincurve>=20.0.0` | Signing/publishing Nostr events (Buzz interop). Prebuilt wheels for CPython 3.11–3.13. |
-| `pq` | `dilithium-py>=1.4.0` | Post-quantum ML-DSA-65 signatures. |
-| `langgraph` | `langgraph>=0.2.0`, `langchain-core>=0.3.0` | LangGraph adapter. |
-| `maf` | `agent-framework-core>=1.0.0` | Microsoft Agent Framework adapter. |
-| `crewai` | `crewai>=1.0.0` | CrewAI adapter. |
-| `runner` | `fastapi`, `uvicorn[standard]`, `pydantic-settings`, `python-multipart` | FastAPI control plane + dashboard backend (single-tenant runner). |
-| `persist` | `sqlalchemy>=2.0.25`, `aiosqlite>=0.20.0` | Persist swarms/runs/receipts to SQLite. |
-| `benchmark` | `crewai>=1.0.0` | Killer-demo harness. `litellm` optional for cost tracking (Windows-incompatible). |
-| `dev` | `pytest`, `pytest-asyncio`, `pytest-cov`, `ruff`, `mypy`, `build` | Local development. |
-| `docs` | `mkdocs`, `mkdocs-material`, `mkdocstrings[python]` | Building this docs site. |
+| Extra       | Pulls                                                                   | Use when                                                                               |
+| ----------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `mcp`       | `mcp>=2.0.0`                                                            | Running `tractum-mcp`.                                                                 |
+| `nostr`     | `coincurve>=20.0.0`                                                     | Signing/publishing Nostr events (Buzz interop). Prebuilt wheels for CPython 3.11–3.13. |
+| `pq`        | `dilithium-py>=1.4.0`                                                   | Post-quantum ML-DSA-65 signatures.                                                     |
+| `langgraph` | `langgraph>=0.2.0`, `langchain-core>=0.3.0`                             | LangGraph adapter.                                                                     |
+| `maf`       | `agent-framework-core>=1.0.0`                                           | Microsoft Agent Framework adapter.                                                     |
+| `crewai`    | `crewai>=1.0.0`                                                         | CrewAI adapter.                                                                        |
+| `runner`    | `fastapi`, `uvicorn[standard]`, `pydantic-settings`, `python-multipart` | FastAPI control plane + dashboard backend (single-tenant runner).                      |
+| `persist`   | `sqlalchemy>=2.0.25`, `aiosqlite>=0.20.0`                               | Persist swarms/runs/receipts to SQLite.                                                |
+| `benchmark` | `crewai>=1.0.0`                                                         | Killer-demo harness. `litellm` optional for cost tracking (Windows-incompatible).      |
+| `dev`       | `pytest`, `pytest-asyncio`, `pytest-cov`, `ruff`, `mypy`, `build`       | Local development.                                                                     |
+| `docs`      | `mkdocs`, `mkdocs-material`, `mkdocstrings[python]`                     | Building this docs site.                                                               |
 
 Install multiple: `pip install tractum[mcp,nostr,pq]`.
 

@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { useState } from "react"
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { useState } from "react";
 
 // Singleton pattern to prevent hydration mismatches
-let browserQueryClient: QueryClient | undefined = undefined
+let browserQueryClient: QueryClient | undefined = undefined;
 
 function makeQueryClient() {
   return new QueryClient({
@@ -14,25 +14,27 @@ function makeQueryClient() {
         refetchOnWindowFocus: false,
       },
     },
-  })
+  });
 }
 
 function getQueryClient() {
   if (typeof window === "undefined") {
     // Server: always create a new client
-    return makeQueryClient()
+    return makeQueryClient();
   } else {
     // Browser: create client once and reuse
     if (!browserQueryClient) {
-      browserQueryClient = makeQueryClient()
+      browserQueryClient = makeQueryClient();
     }
-    return browserQueryClient
+    return browserQueryClient;
   }
 }
 
 export function Providers({ children }: { children: React.ReactNode }) {
   // Note: useState avoids unnecessary re-renders, but we use the singleton
-  const [queryClient] = useState(() => getQueryClient())
+  const [queryClient] = useState(() => getQueryClient());
 
-  return <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  return (
+    <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+  );
 }

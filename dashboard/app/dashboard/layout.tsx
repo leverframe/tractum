@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { Sidebar } from "@/components/sidebar"
-import { Header } from "@/components/header"
-import { DeployAgentModal } from "@/components/deploy-agent-modal"
-import { useAppStore } from "@/lib/store"
+import { Sidebar } from "@/components/sidebar";
+import { Header } from "@/components/header";
+import { DeployAgentModal } from "@/components/deploy-agent-modal";
+import { useAppStore } from "@/lib/store";
 
 export default function DashboardLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  const sidebarOpen = useAppStore((state) => state.sidebarOpen)
+  const sidebarOpen = useAppStore((state) => state.sidebarOpen);
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
@@ -25,5 +25,5 @@ export default function DashboardLayout({
       </div>
       <DeployAgentModal />
     </div>
-  )
+  );
 }

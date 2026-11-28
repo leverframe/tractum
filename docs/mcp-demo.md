@@ -124,9 +124,9 @@ The tool re-checks everything offline — no network, deterministic:
   "valid_statements": 3,
   "total_statements": 3,
   "statements": [
-    { "agent": "ShipIt",      "valid": true, "reason": "" },
+    { "agent": "ShipIt", "valid": true, "reason": "" },
     { "agent": "Reliability", "valid": true, "reason": "" },
-    { "agent": "Security",    "valid": true, "reason": "" }
+    { "agent": "Security", "valid": true, "reason": "" }
   ]
 }
 ```
@@ -135,14 +135,14 @@ Pin matters: without `expected_operator_pubkey`, anyone can re-sign a
 doctored payload with their own key and it would still read `valid`.
 Per-statement failures come back named (`key-mismatch`,
 `task-id-mismatch`, `response-mismatch:answer`, `signature-invalid`), so a
-tampered receipt tells you *what* broke, not just that it broke.
+tampered receipt tells you _what_ broke, not just that it broke.
 
 ## One setting worth knowing: the signing key
 
 Out of the box the server signs every receipt with a fresh **ephemeral**
 keypair — the receipt is signed and internally verifiable, but the key
 dies with the response, so a verifier must take the operator public key
-from the receipt itself. For receipts a verifier can pin *ahead of time*,
+from the receipt itself. For receipts a verifier can pin _ahead of time_,
 give the server a stable operator key. Generate one:
 
 ```bash

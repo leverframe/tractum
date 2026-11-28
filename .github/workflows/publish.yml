@@ -5,11 +5,11 @@ name: Publish
 # if needed (e.g., first time after setting up the secret).
 on:
   push:
-    tags: ['v*']
+    tags: ["v*"]
   workflow_dispatch:
     inputs:
       tag:
-        description: 'Tag to publish (e.g. v0.3.0)'
+        description: "Tag to publish (e.g. v0.3.0)"
         required: true
         type: string
 
@@ -28,7 +28,7 @@ jobs:
 
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.12'
+          python-version: "3.12"
           cache: pip
 
       - name: Install build tooling
@@ -61,9 +61,9 @@ jobs:
     name: Publish to PyPI
     needs: build
     runs-on: ubuntu-latest
-    environment: pypi  # matches PyPI Trusted Publishing config
+    environment: pypi # matches PyPI Trusted Publishing config
     permissions:
-      id-token: write  # required for OIDC trusted publishing
+      id-token: write # required for OIDC trusted publishing
     steps:
       - name: Download artifacts
         uses: actions/download-artifact@v8

@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { useAppStore } from "@/lib/store"
-import { Bell, Search, User } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { useAppStore } from "@/lib/store";
+import { Bell, Search, User } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export function Header() {
-  const currentTenant = useAppStore((state) => state.currentTenant)
+  const currentTenant = useAppStore((state) => state.currentTenant);
 
   return (
     <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 h-16">
@@ -43,5 +43,5 @@ export function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }

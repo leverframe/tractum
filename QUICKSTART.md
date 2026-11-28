@@ -76,6 +76,7 @@ tractum-mcp --http     # HTTP/SSE (remote agents, default port 8765)
 ```
 
 The exposed tools:
+
 - `reach_consensus(question, specialists, strategy)` → signed receipt
 - `verify_consensus(receipt)` → `{"valid": true/false}`
 

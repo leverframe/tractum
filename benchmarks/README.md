@@ -24,11 +24,11 @@ receipt. Same file the demo writes to `examples/`, staged into the volume.
 
 ## Knobs
 
-| Env var | Default | Effect |
-|---|---|---|
-| `ANTHROPIC_API_KEY` | _(required)_ | Drives the agent + judge calls |
-| `KILLER_DEMO_RUNS` | `10` | Runs per approach. Lower for a smoke test |
-| `TRACTUM_TEST_RELAY` | `ws://relay:10547` | Optional; only for Nostr tests |
+| Env var              | Default            | Effect                                    |
+| -------------------- | ------------------ | ----------------------------------------- |
+| `ANTHROPIC_API_KEY`  | _(required)_       | Drives the agent + judge calls            |
+| `KILLER_DEMO_RUNS`   | `10`               | Runs per approach. Lower for a smoke test |
+| `TRACTUM_TEST_RELAY` | `ws://relay:10547` | Optional; only for Nostr tests            |
 
 Smoke test in ~30s: `KILLER_DEMO_RUNS=1 docker compose up killer-bench`.
 
